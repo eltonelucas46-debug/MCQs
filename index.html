@@ -3,1280 +3,538 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physiology of the Cell | Assessment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102A35">
+<title>Embryology Arena | Eltone vs Yvonne</title>
 
 <style>
-:root {
-  --primary: #1769e0;
-  --dark: #10213b;
-  --bg: #f2f6fc;
-  --green: #12804a;
-  --red: #d92332;
-  --border: #dce5f1;
+:root{
+--navy:#102A35;--teal:#167D70;--deep:#10594F;
+--mint:#72E3C0;--ivory:#F7F5EF;--white:#fff;
+--text:#243B43;--muted:#71838A;--border:#DCE7E3;
+--green:#16804A;--red:#D84C55;--gold:#D6B15D;
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--dark);
-  line-height: 1.6;
+*{box-sizing:border-box}
+body{
+margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);
+background:radial-gradient(ellipse at 5% 5%,#DDF2E9,transparent 38%),
+radial-gradient(ellipse at 95% 50%,#E5EEE6,transparent 32%),var(--ivory);
+line-height:1.65
 }
-
-header {
-  background: linear-gradient(135deg, #10213b, #1769e0);
-  color: white;
-  padding: 25px 16px;
-  text-align: center;
+button,select,input{font:inherit}
+button{cursor:pointer;transition:.2s}
+button:focus-visible,select:focus-visible,input:focus-visible{
+outline:3px solid #72E3C0;outline-offset:3px
 }
-
-header h1 { margin: 0 0 8px; font-size: 25px; }
-header p { margin: 5px 0; }
-
-.container {
-  width: min(900px, 94%);
-  margin: 22px auto;
+header{
+background:linear-gradient(130deg,#102A35,#10594F);
+color:white;text-align:center;padding:24px 12px;
+border-bottom:3px solid var(--mint)
 }
-
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 16px;
-  margin-bottom: 18px;
-  box-shadow: 0 4px 18px #10213b0b;
-  border: 1px solid var(--border);
+header h1{font-size:clamp(20px,4vw,30px);margin:0;font-weight:800}
+header p{margin:4px;color:#D2E8E1;font-size:13px}
+.container{width:min(920px,94%);margin:22px auto}
+.card{
+background:#ffffffed;border:1px solid var(--border);
+border-radius:18px;padding:22px;margin-bottom:18px;
+box-shadow:0 10px 32px #102a350c
 }
-
-h2, h3 { margin-top: 0; }
-.small { color: #62718a; font-size: 14px; }
-
-label { display: block; font-weight: bold; margin-bottom: 8px; }
-
-input, select {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #bac8dc;
-  border-radius: 9px;
-  font-size: 16px;
-  background: white;
-  margin-bottom: 16px;
+h2,h3{font-family:Manrope,Arial,sans-serif;color:var(--navy);line-height:1.4}
+h2{font-size:22px}
+.small{font-size:12px;color:var(--muted)}
+.hero{
+position:relative;isolation:isolate;overflow:hidden;text-align:center;
+color:white;background:linear-gradient(135deg,#102A35,#10594F);
+border-radius:20px;padding:32px 12px;margin-bottom:22px
 }
-
-button {
-  padding: 13px 18px;
-  border: none;
-  border-radius: 9px;
-  background: var(--primary);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
+.hero:before,.hero:after{
+content:"";position:absolute;z-index:-1;width:180px;height:180px;
+border:1px solid #72E3C035;border-radius:50%;pointer-events:none
 }
-
-button:disabled { opacity: .45; cursor: not-allowed; }
-
-button.secondary {
-  background: #e8effa;
-  color: var(--dark);
+.hero:before{left:-75px;top:-100px;box-shadow:0 0 0 25px #72E3C010,0 0 0 50px #72E3C008}
+.hero:after{right:-75px;bottom:-110px;box-shadow:0 0 0 25px #72E3C010}
+.versus{
+font-size:clamp(25px,6vw,46px);font-weight:900;
+letter-spacing:-1px;animation:entrance .8s ease-out both
 }
-
-button.danger { background: var(--red); }
-
-button:focus-visible, input:focus-visible {
-  outline: 3px solid #8ab7ff;
-  outline-offset: 2px;
+.eltone{color:#72E3C0}.yvonne{color:#F3E8B4}
+.vs{display:inline-block;color:white;font-size:.65em;margin:0 6px;animation:pulse 1.6s infinite}
+.hero h2{color:white;font-size:23px;margin:14px 0 4px}
+.hero p{color:#D6EBE5;font-size:13px;letter-spacing:.5px}
+@keyframes entrance{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{50%{transform:scale(1.12);color:var(--mint)}}
+button{
+border:0;border-radius:10px;background:var(--teal);color:white;
+font-weight:700;padding:12px 17px
 }
-
-.notice {
-  background: #edf5ff;
-  padding: 14px;
-  border-radius: 10px;
-  border-left: 4px solid var(--primary);
-  margin: 14px 0;
+button:hover:not(:disabled){background:var(--deep);transform:translateY(-1px)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.secondary{background:#E8F1ED!important;color:var(--navy)!important}
+.danger{background:var(--red)}
+select{
+width:100%;padding:13px;border:1px solid #C7DAD4;
+border-radius:10px;background:white;color:var(--navy)
 }
-
-.warning {
-  background: #fff0f0;
-  color: #9c1824;
-  padding: 12px;
-  border-radius: 9px;
+.field{display:block;font-weight:700;margin:13px 0 6px}
+.notice{background:#EAF5F0;border-left:4px solid var(--teal);padding:13px;border-radius:9px;margin:14px 0}
+.warning{background:#FCE9E8;color:#A32935;padding:13px;border-radius:9px}
+.hidden{display:none!important}
+.topbar{
+position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;
+align-items:center;flex-wrap:wrap;gap:10px;background:#fffffff5;
+backdrop-filter:blur(12px);border:1px solid var(--border);
+border-radius:13px;padding:12px;margin-bottom:12px
 }
-
-.hidden { display: none !important; }
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 13px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 3px 12px #0000000a;
-  margin-bottom: 16px;
+.timer{font-size:23px;font-weight:900;color:var(--green);font-variant-numeric:tabular-nums}
+.timer.red{color:var(--red);animation:flash .8s infinite}
+@keyframes flash{50%{opacity:.45}}
+.progress-track{height:7px;background:#DDE9E3;border-radius:10px;overflow:hidden;margin:12px 0 18px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--mint));transition:width .2s}
+.navigator{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 18px}
+.navbtn{
+width:38px;height:38px;padding:0;border-radius:9px;
+background:#E9EEEB;color:var(--navy);font-size:13px
 }
-
-.timer {
-  font-size: 22px;
-  font-weight: bold;
-  font-variant-numeric: tabular-nums;
-  color: var(--green);
+.navbtn.answered{background:#CDEFE0;color:#10594F}
+.navbtn.current{outline:2px solid var(--teal);outline-offset:2px}
+.question{
+background:white;border:1px solid var(--border);border-radius:15px;
+padding:20px;margin-bottom:15px;scroll-margin-top:150px
 }
-
-.timer.red {
-  color: var(--red);
-  animation: pulse 1s infinite;
+.q-number{font-size:11px;color:var(--teal);font-weight:900;letter-spacing:1px}
+.question h3{font-size:16px}
+.option{
+display:flex;align-items:flex-start;gap:10px;padding:12px;margin:8px 0;
+border:1px solid #E0E9E4;border-radius:10px;cursor:pointer
 }
-
-@keyframes pulse {
-  50% { opacity: .55; }
+.option:hover{background:#F3F8F5;border-color:#A4D4C5}
+.option:has(input:checked){border-color:var(--teal);background:#EAF5F0}
+.option input{margin-top:5px;accent-color:var(--teal);flex-shrink:0}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.stat{background:#F0F6F2;border:1px solid #E0EBE4;border-radius:12px;padding:13px;overflow-wrap:anywhere}
+.stat strong{display:block;font-size:23px;color:var(--navy)}
+.score{font-size:44px;font-weight:900;color:var(--teal)}
+.remark{background:#F1F6F3;border-left:4px solid var(--teal);padding:12px;margin:9px 0;border-radius:8px}
+.review-item{padding:15px 0;border-bottom:1px solid var(--border);overflow-wrap:anywhere}
+.correct{color:var(--green);font-weight:800}
+.incorrect{color:var(--red);font-weight:800}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:450px}
+td,th{text-align:left;padding:9px;border-bottom:1px solid var(--border);font-size:12px}
+footer{text-align:center;padding:22px;color:var(--muted);font-size:12px}
+@media(max-width:500px){
+.card{padding:16px}.hero{padding:27px 8px}.question{padding:15px}
+.score{font-size:36px}.navbtn{width:34px;height:34px}
 }
-
-.progress-track {
-  height: 8px;
-  background: #e5ebf5;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 8px;
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
 }
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--primary);
-  transition: width .2s;
-}
-
-.question {
-  padding: 20px;
-  margin-bottom: 15px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  scroll-margin-top: 125px;
-}
-
-.question h3 { font-size: 16px; line-height: 1.5; }
-
-.q-number {
-  color: var(--primary);
-  font-size: 13px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-}
-
-.option {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 12px;
-  margin: 9px 0;
-  border: 1px solid #dce5f1;
-  border-radius: 9px;
-  cursor: pointer;
-  font-weight: normal;
-  transition: background .15s;
-}
-
-.option:hover { background: #f4f8ff; }
-
-.option:has(input:checked) {
-  border-color: var(--primary);
-  background: #edf5ff;
-}
-
-.option input {
-  width: 18px;
-  height: 18px;
-  margin: 2px 0 0;
-  flex-shrink: 0;
-  accent-color: var(--primary);
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.result-score {
-  font-size: 42px;
-  color: var(--primary);
-  font-weight: bold;
-  margin: 8px 0;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.stat {
-  background: #f3f7fd;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.stat strong {
-  display: block;
-  font-size: 23px;
-}
-
-.remark {
-  padding: 13px;
-  margin: 10px 0;
-  background: #f3f7fd;
-  border-left: 4px solid var(--primary);
-  border-radius: 7px;
-}
-
-.review-item {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.correct { color: var(--green); font-weight: bold; }
-.incorrect { color: var(--red); font-weight: bold; }
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #62718a;
-  font-size: 13px;
-}
-
-@media (max-width: 500px) {
-  header h1 { font-size: 21px; }
-  .card { padding: 16px; }
-  .question { padding: 15px; }
-  .result-score { font-size: 35px; }
-  .stats { grid-template-columns: 1fr 1fr; }
+@media print{
+body{background:white;color:black;font-size:10px}
+header{background:white;color:black;border:0;padding:8px}
+header p{color:black}
+.container{width:100%;margin:0}
+#setup,#exam,footer,.no-print{display:none!important}
+#results{display:block!important}
+#results .card{box-shadow:none;border:1px solid #aaa;padding:10px;margin:7px 0}
+#results button{display:none!important}
+.review-item{break-inside:avoid}
+.score{font-size:25px}
+.stats{gap:5px;margin:7px 0}
+.stat{padding:5px}
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <h1>🧬 Physiology of the Cell</h1>
-  <p>University-Level MCQ Assessment</p>
-  <p>Eltone &amp; Yvonne | 30 Questions | 30 Marks</p>
+<h1>🧬 EMBRYOLOGY ARENA</h1>
+<p>PREGNANCY &amp; HUMAN DEVELOPMENT</p>
+<p>Medical Sciences • University Assessment Portal</p>
 </header>
 
 <main class="container">
 
-  <section id="setup" class="card">
-    <h2>Welcome to the Assessment</h2>
-    <p>
-      Test your understanding of cellular physiology, membrane transport,
-      membrane potentials, cell signalling, organelles, and apoptosis.
-    </p>
+<section id="setup" class="card">
+<div class="hero">
+<p>THE ULTIMATE ACADEMIC SHOWDOWN</p>
+<div class="versus"><span class="eltone">ELTONE</span> <span class="vs">VS</span> <span class="yvonne">YVONNE</span></div>
+<h2>Who Masters Embryology?</h2>
+<p>TWO MINDS. THIRTY QUESTIONS. ONE CHALLENGE.</p>
+</div>
 
-    <div class="notice">
-      <strong>Assessment rules</strong>
-      <ul>
-        <li>30 multiple-choice questions, each worth 1 mark.</li>
-        <li>Choose ONE answer from A, B, C, D or E.</li>
-        <li>Maximum normal time: 15 minutes.</li>
-        <li>The timer turns red after 15 minutes.</li>
-        <li>A 5-mark penalty applies when the elapsed time reaches
-          16 minutes. The test automatically submits then.</li>
-        <li>Unanswered questions receive zero marks.</li>
-        <li>Results and answer explanations appear after submission.</li>
-      </ul>
-    </div>
+<h2>Pregnancy &amp; Human Development</h2>
+<p>Test your understanding of fertilisation, implantation, gastrulation, organogenesis, placental development, fetal circulation and pregnancy.</p>
 
-    <label for="student">Select the student</label>
-    <select id="student">
-      <option value="Eltone">Eltone</option>
-      <option value="Yvonne">Yvonne</option>
-    </select>
+<div class="notice">
+<strong>ASSESSMENT RULES</strong>
+<ul>
+<li>30 university-level multiple-choice questions.</li>
+<li>Five options per question: A–E.</li>
+<li>Each correct answer earns 1 mark.</li>
+<li>15-minute target; timer turns red after 15 minutes.</li>
+<li>At 16:00, a 5-mark penalty is applied and the assessment submits automatically.</li>
+<li>Final score is out of 30, with percentage, remarks and explanations.</li>
+</ul>
+</div>
 
-    <div id="previousResults" class="notice hidden"></div>
+<label class="field" for="student">Select student</label>
+<select id="student">
+<option value="" selected disabled>-- Choose Eltone or Yvonne --</option>
+<option value="Eltone">Eltone</option>
+<option value="Yvonne">Yvonne</option>
+</select>
+<div id="previous" class="notice hidden"></div>
+<div class="actions">
+<button id="startBtn" disabled onclick="startTest()">Start Assessment →</button>
+</div>
+<p class="small">Your answers and completed results are saved in this browser on this device.</p>
+</section>
 
-    <button id="startBtn" onclick="startTest()">
-      Start Assessment →
-    </button>
-    <p class="small">The timer starts when you press Start.</p>
-  </section>
+<section id="exam" class="hidden">
+<div class="topbar">
+<div><strong id="studentLabel"></strong><div class="small" id="progressText">0/30 answered</div></div>
+<div><div class="small">TIME ELAPSED</div><div id="timer" class="timer">00:00</div></div>
+</div>
+<div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+<strong>Question Navigator</strong>
+<div class="small">Green = answered · Outlined = current</div>
+<div id="navigator" class="navigator"></div>
+<div id="questionList"></div>
+<div class="card">
+<p id="unansweredNotice" class="small"></p>
+<div class="actions">
+<button onclick="submitTest(false)">Submit Assessment</button>
+<button class="secondary" onclick="goTop()">Back to Top ↑</button>
+</div>
+</div>
+</section>
 
-  <section id="exam" class="hidden">
-    <div class="topbar">
-      <div>
-        <strong id="studentLabel">Student</strong>
-        <div class="small" id="progressText">Question 0 of 30 answered</div>
-      </div>
-      <div>
-        <div class="small">Time elapsed / 15:00</div>
-        <div id="timer" class="timer">00:00</div>
-      </div>
-    </div>
+<section id="results" class="hidden">
+<div class="card">
+<h2>🏆 Assessment Results</h2>
+<p id="resultName"></p>
+<div id="scoreDisplay" class="score">0/30</div>
+<strong id="percentageDisplay"></strong>
+<div class="stats">
+<div class="stat"><span class="small">Raw score</span><strong id="rawScore">0/30</strong></div>
+<div class="stat"><span class="small">Time penalty</span><strong id="penalty">0</strong></div>
+<div class="stat"><span class="small">Correct answers</span><strong id="correctCount">0</strong></div>
+<div class="stat"><span class="small">Unanswered</span><strong id="unansweredCount">0</strong></div>
+</div>
+<div id="overallRemark" class="notice"></div>
+<div id="timeRemark"></div>
+</div>
 
-    <div class="progress-track">
-      <div id="progressFill" class="progress-fill"></div>
-    </div>
+<div class="card">
+<h2>Performance Bands</h2>
+<p class="small">Your final score is compared against each 5-mark interval.</p>
+<div id="intervalRemarks"></div>
+</div>
 
-    <div id="questionList"></div>
+<div class="card">
+<h2>📚 Answers &amp; Explanations</h2>
+<div id="reviewList"></div>
+</div>
 
-    <div class="card">
-      <p id="unansweredNotice" class="small">
-        Check your answers before submitting.
-      </p>
-      <button onclick="submitTest(false)">Submit Assessment</button>
-      <button class="secondary" onclick="goToTop()">Back to Top ↑</button>
-    </div>
-  </section>
+<div class="card">
+<h2>🥇 Eltone vs Yvonne Leaderboard</h2>
+<div id="leaderboard" class="table-wrap"></div>
+</div>
 
-  <section id="results" class="hidden">
-    <div class="card">
-      <h2>🏆 Assessment Results</h2>
-      <p id="resultName"></p>
-      <div id="scoreDisplay" class="result-score">0/30</div>
-      <p id="percentageDisplay"></p>
+<div class="card">
+<h2>Assessment Register</h2>
+<div id="register" class="table-wrap"></div>
+<div class="actions no-print">
+<button onclick="printResults()">Download / Print PDF</button>
+<button class="secondary" onclick="showRegister()">View Register</button>
+</div>
+<p class="small no-print">Choose Save as PDF in the browser's print dialogue.</p>
+</div>
 
-      <div class="stats">
-        <div class="stat">
-          <span class="small">Raw score</span>
-          <strong id="rawScore">0/30</strong>
-        </div>
-        <div class="stat">
-          <span class="small">Time penalty</span>
-          <strong id="penalty">0 marks</strong>
-        </div>
-        <div class="stat">
-          <span class="small">Correct answers</span>
-          <strong id="correctCount">0</strong>
-        </div>
-        <div class="stat">
-          <span class="small">Unanswered</span>
-          <strong id="unansweredCount">0</strong>
-        </div>
-      </div>
-
-      <div id="overallRemark" class="notice"></div>
-      <div id="timeRemark"></div>
-    </div>
-
-    <div class="card">
-      <h2>Performance comments</h2>
-      <p class="small">
-        Your score is interpreted in 5-mark intervals, using your final
-        score after any time penalty.
-      </p>
-      <div id="intervalRemarks"></div>
-    </div>
-
-    <div class="card">
-      <h2>Answer Review &amp; Explanations</h2>
-      <p class="small">
-        Review each correct answer and understand why it is correct.
-      </p>
-      <div id="reviewList"></div>
-    </div>
-
-    <div class="card">
-      <h2>Student Results Register</h2>
-      <p class="small">
-        Completed attempts are recorded on this device. You can use the
-        register to compare Eltone's and Yvonne's results.
-      </p>
-      <div id="register"></div>
-      <div class="actions">
-        <button onclick="downloadResults()">Download Results CSV</button>
-        <button class="secondary" onclick="printResults()">Print Results</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Continue</h2>
-      <p id="nextMessage"></p>
-      <button id="nextBtn" onclick="nextStudent()">
-        Next Student
-      </button>
-      <button class="secondary" onclick="showRegister()">
-        View Results Register
-      </button>
-    </div>
-  </section>
-
+<div class="card no-print">
+<h2>Continue</h2>
+<p id="nextMessage"></p>
+<div class="actions">
+<button onclick="nextStudent()" id="nextBtn">Continue →</button>
+<button class="secondary" onclick="backHome()">Homepage</button>
+</div>
+</div>
+</section>
 </main>
 
-<footer>
-  Physiology of the Cell · Educational assessment · 30 marks
-</footer>
+<footer>EMBRYOLOGY ARENA · Learn. Apply. Excel.</footer>
 
 <script>
 "use strict";
 
-/*
-  Each question has five options.
-  The answer positions are balanced: A, B, C, D, E repeat six times.
-  Question data is contained in this file; no internet is required.
-*/
-
-const questions = [
-  {
-    q: "Which statement best describes the fluid mosaic model of the plasma membrane?",
-    o: [
-      "A rigid phospholipid sheet with immobile proteins",
-      "A phospholipid bilayer containing proteins that can move laterally",
-      "A carbohydrate bilayer containing embedded DNA",
-      "A protein monolayer surrounding intracellular fluid",
-      "A cellulose wall containing fixed lipid channels"
-    ],
-    a: 1,
-    e: "The membrane is a dynamic phospholipid bilayer with integral and peripheral proteins. Many membrane components can move laterally."
-  },
-  {
-    q: "Which substance crosses a pure phospholipid bilayer most readily by simple diffusion?",
-    o: [
-      "Sodium ions",
-      "Glucose",
-      "Albumin",
-      "Oxygen",
-      "A large nucleotide"
-    ],
-    a: 3,
-    e: "Oxygen is small and nonpolar, so it dissolves in the lipid bilayer and diffuses across it readily."
-  },
-  {
-    q: "The sodium-potassium ATPase typically transports how many ions per ATP molecule hydrolysed?",
-    o: [
-      "Three Na⁺ out and two K⁺ in",
-      "Two Na⁺ out and three K⁺ in",
-      "Three Na⁺ in and two K⁺ out",
-      "Equal numbers of Na⁺ and K⁺ in the same direction",
-      "One Na⁺ out and one K⁺ in"
-    ],
-    a: 0,
-    e: "The pump exports three sodium ions and imports two potassium ions per ATP. It is electrogenic and helps maintain ionic gradients."
-  },
-  {
-    q: "A red blood cell is placed in a markedly hypotonic solution. What is the most likely outcome?",
-    o: [
-      "It loses water and shrinks",
-      "It remains unchanged because water cannot cross the membrane",
-      "It gains water and may undergo haemolysis",
-      "It actively pumps water out using ATP",
-      "It immediately becomes isotonic with the surrounding solution without changing volume"
-    ],
-    a: 2,
-    e: "A hypotonic extracellular solution has lower effective osmolarity than the cell. Water enters by osmosis, causing swelling and potentially haemolysis."
-  },
-  {
-    q: "Which process allows a cell to internalise extracellular material within membrane-bound vesicles?",
-    o: [
-      "Exocytosis",
-      "Facilitated diffusion",
-      "Primary active transport",
-      "Osmosis",
-      "Endocytosis"
-    ],
-    a: 4,
-    e: "Endocytosis brings extracellular substances into the cell by invagination of the plasma membrane and vesicle formation."
-  },
-  {
-    q: "Which organelle is the principal site of aerobic ATP production through oxidative phosphorylation?",
-    o: [
-      "Lysosome",
-      "Mitochondrion",
-      "Golgi apparatus",
-      "Nucleolus",
-      "Peroxisome"
-    ],
-    a: 1,
-    e: "The electron transport chain and ATP synthase are located in the inner mitochondrial membrane in eukaryotic cells."
-  },
-  {
-    q: "A membrane transporter moves glucose down its concentration gradient without directly hydrolysing ATP. This is an example of:",
-    o: [
-      "Primary active transport",
-      "Secondary active transport",
-      "Endocytosis",
-      "Facilitated diffusion",
-      "Exocytosis"
-    ],
-    a: 3,
-    e: "Facilitated diffusion uses a membrane protein to move a substance down its electrochemical gradient without direct ATP consumption."
-  },
-  {
-    q: "Which statement about the resting membrane potential of a typical neuron is most accurate?",
-    o: [
-      "It is produced exclusively by calcium ions",
-      "It is always exactly zero millivolts",
-      "It is identical in every cell type",
-      "It requires continuous opening of every voltage-gated sodium channel",
-      "It reflects ion concentration gradients and selective membrane permeability"
-    ],
-    a: 4,
-    e: "Resting membrane potential reflects ionic gradients, especially potassium, together with selective membrane permeability and the contribution of electrogenic pumps."
-  },
-  {
-    q: "The Nernst equation calculates the equilibrium potential for:",
-    o: [
-      "A single ionic species across a membrane",
-      "All ions combined regardless of permeability",
-      "The ATP concentration in mitochondria",
-      "The rate of protein synthesis",
-      "The osmotic pressure of pure water only"
-    ],
-    a: 0,
-    e: "The Nernst equation gives the electrical potential at which the electrical and chemical forces on a particular ion balance."
-  },
-  {
-    q: "Which enzyme is responsible for joining Okazaki fragments during DNA replication?",
-    o: [
-      "RNA polymerase",
-      "DNA ligase",
-      "Helicase",
-      "Pepsin",
-      "ATP synthase"
-    ],
-    a: 1,
-    e: "DNA ligase seals breaks in the sugar-phosphate backbone, joining adjacent DNA fragments on the lagging strand."
-  },
-  {
-    q: "Which organelle modifies, sorts and packages many proteins destined for secretion?",
-    o: [
-      "Ribosome",
-      "Centrosome",
-      "Golgi apparatus",
-      "Nucleolus",
-      "Smooth endoplasmic reticulum exclusively"
-    ],
-    a: 2,
-    e: "The Golgi apparatus processes and sorts many proteins and lipids before directing them to their destinations."
-  },
-  {
-    q: "Which structure forms the main selective barrier between the cytoplasm and extracellular fluid?",
-    o: [
-      "Nuclear nucleolus",
-      "Cytoskeleton alone",
-      "Mitochondrial matrix",
-      "Plasma membrane",
-      "Chromatin"
-    ],
-    a: 3,
-    e: "The plasma membrane separates the intracellular and extracellular environments and regulates movement of substances."
-  },
-  {
-    q: "Which type of junction is specialised for rapid electrical communication between adjacent cells?",
-    o: [
-      "Tight junction",
-      "Desmosome",
-      "Hemidesmosome",
-      "Adherens junction",
-      "Gap junction"
-    ],
-    a: 4,
-    e: "Gap junctions contain connexon channels that permit ions and certain small molecules to pass directly between neighbouring cells."
-  },
-  {
-    q: "What is the primary function of lysosomal acid hydrolases?",
-    o: [
-      "Digesting macromolecules within an acidic compartment",
-      "Producing steroid hormones",
-      "Synthesising ribosomal RNA",
-      "Generating the mitotic spindle",
-      "Replicating mitochondrial DNA exclusively"
-    ],
-    a: 0,
-    e: "Lysosomal enzymes digest proteins, lipids, carbohydrates and nucleic acids in an acidic lumen."
-  },
-  {
-    q: "Which mechanism moves a substance against its electrochemical gradient using energy directly from ATP hydrolysis?",
-    o: [
-      "Simple diffusion",
-      "Primary active transport",
-      "Osmosis",
-      "Filtration",
-      "Facilitated diffusion"
-    ],
-    a: 1,
-    e: "Primary active transport couples movement against a gradient directly to an energy source such as ATP hydrolysis."
-  },
-  {
-    q: "Which event most directly triggers opening of voltage-gated sodium channels during a typical neuronal action potential?",
-    o: [
-      "Complete depletion of intracellular ATP",
-      "Closure of all potassium leak channels",
-      "Membrane depolarisation reaching threshold",
-      "An increase in extracellular protein concentration",
-      "Permanent inactivation of the sodium-potassium pump"
-    ],
-    a: 2,
-    e: "When membrane depolarisation reaches threshold, voltage-gated sodium channels activate rapidly, initiating the rising phase of the action potential."
-  },
-  {
-    q: "Which statement best describes receptor-mediated endocytosis?",
-    o: [
-      "It transports all extracellular substances equally",
-      "It occurs only in dead cells",
-      "It requires no membrane proteins",
-      "Specific ligands bind receptors before internalisation",
-      "It moves substances exclusively from cytoplasm to extracellular fluid"
-    ],
-    a: 3,
-    e: "Ligand binding to specific membrane receptors promotes selective uptake, often through clathrin-coated pits."
-  },
-  {
-    q: "Which organelle is particularly important in beta-oxidation of very-long-chain fatty acids and detoxification of hydrogen peroxide?",
-    o: [
-      "Nucleolus",
-      "Golgi apparatus",
-      "Ribosome",
-      "Rough endoplasmic reticulum",
-      "Peroxisome"
-    ],
-    a: 4,
-    e: "Peroxisomes participate in oxidation of very-long-chain fatty acids and contain catalase, which breaks down hydrogen peroxide."
-  },
-  {
-    q: "Which statement about facilitated diffusion is correct?",
-    o: [
-      "It is passive and depends on a concentration or electrochemical gradient",
-      "It always requires ATP hydrolysis",
-      "It necessarily moves solutes against their gradients",
-      "It occurs only through the lipid portion of the membrane",
-      "It cannot show saturation kinetics"
-    ],
-    a: 0,
-    e: "Facilitated diffusion is passive. Carrier-mediated forms can become saturated because the number of transport proteins is limited."
-  },
-  {
-    q: "What is the main role of the nucleolus?",
-    o: [
-      "Lipid bilayer synthesis",
-      "Ribosomal RNA synthesis and ribosomal subunit assembly",
-      "Lysosomal digestion",
-      "Oxidative phosphorylation",
-      "Sodium storage for action potentials"
-    ],
-    a: 1,
-    e: "The nucleolus is the major site of ribosomal RNA production and early assembly of ribosomal subunits."
-  },
-  {
-    q: "Which change would generally increase the rate of simple diffusion across a membrane, assuming other factors remain constant?",
-    o: [
-      "Decreasing the concentration gradient",
-      "Increasing membrane thickness",
-      "Increasing the concentration gradient",
-      "Reducing the membrane surface area",
-      "Making a lipid-soluble molecule less soluble in lipids"
-    ],
-    a: 2,
-    e: "By Fick's law, diffusion rate increases with a larger concentration gradient and surface area, and decreases with greater diffusion distance."
-  },
-  {
-    q: "Which second messenger is produced from ATP by adenylyl cyclase?",
-    o: [
-      "cGMP from GTP",
-      "Inositol trisphosphate from phosphatidylinositol bisphosphate",
-      "Diacylglycerol from membrane phospholipid",
-      "Cyclic AMP (cAMP)",
-      "Calmodulin from calcium ions"
-    ],
-    a: 3,
-    e: "Adenylyl cyclase converts ATP into cyclic AMP, which can activate protein kinase A and other signalling targets."
-  },
-  {
-    q: "Which cellular process selectively removes damaged organelles through delivery to lysosomes?",
-    o: [
-      "Glycolysis",
-      "Transcription",
-      "Exocytosis",
-      "DNA replication",
-      "Autophagy"
-    ],
-    a: 4,
-    e: "Autophagy delivers cellular material, including damaged organelles, to lysosomes for degradation and recycling."
-  },
-  {
-    q: "Which statement about the sodium-potassium ATPase is correct?",
-    o: [
-      "It is electrogenic because more positive charges leave than enter per cycle",
-      "It moves sodium and potassium down their gradients without energy",
-      "It transports three potassium ions outward for every two sodium ions inward",
-      "It is located exclusively in the mitochondrial matrix",
-      "It transports water directly through a protein pore"
-    ],
-    a: 0,
-    e: "Three sodium ions leave and two potassium ions enter per ATP hydrolysed, producing a net outward movement of one positive charge."
-  },
-  {
-    q: "During apoptosis, which protein complex is associated with activation of initiator caspase-9?",
-    o: [
-      "The ribosomal initiation complex",
-      "The apoptosome",
-      "The sodium-potassium pump",
-      "The spliceosome",
-      "The mitotic spindle"
-    ],
-    a: 1,
-    e: "Cytochrome c and Apaf-1 help assemble the apoptosome, which recruits and activates initiator caspase-9 in the intrinsic pathway."
-  },
-  {
-    q: "A cell is placed in a solution with the same effective osmolarity as its cytoplasm. What is the expected net water movement?",
-    o: [
-      "Continuous net water entry causing lysis",
-      "Continuous net water loss causing shrinkage",
-      "No net water movement at equilibrium",
-      "Water moves only into the nucleus",
-      "Water must be pumped out using ATP"
-    ],
-    a: 2,
-    e: "In an isotonic environment, water continues to move in both directions, but there is no net movement that changes cell volume."
-  },
-  {
-    q: "Which membrane component is most directly responsible for cell recognition in many physiological processes?",
-    o: [
-      "Cholesterol alone",
-      "Phospholipid fatty acid tails alone",
-      "Cytosolic ATP molecules",
-      "Carbohydrate chains attached to membrane glycoproteins and glycolipids",
-      "Free amino acids in the cytoplasm"
-    ],
-    a: 3,
-    e: "Carbohydrate chains on glycoproteins and glycolipids contribute to the glycocalyx and are involved in cell recognition and adhesion."
-  },
-  {
-    q: "Which mechanism best explains why potassium permeability strongly influences the resting membrane potential of many neurons?",
-    o: [
-      "Potassium is absent from the intracellular fluid",
-      "The membrane is equally permeable to every ion",
-      "Potassium cannot cross the plasma membrane",
-      "The resting membrane potential is generated only by chloride pumps",
-      "Potassium leak conductance is often high relative to other ionic conductances at rest"
-    ],
-    a: 4,
-    e: "Many resting neurons have substantial potassium leak conductance, so the resting potential lies relatively close to the potassium equilibrium potential, though other ions also contribute."
-  },
-  {
-    q: "Which statement best distinguishes primary from secondary active transport?",
-    o: [
-      "Primary transport uses energy directly, whereas secondary transport uses energy stored in another ion's gradient",
-      "Primary transport always moves water, whereas secondary transport moves proteins",
-      "Secondary transport never depends on a membrane protein",
-      "Primary transport is always passive",
-      "Secondary transport occurs only in the nucleus"
-    ],
-    a: 0,
-    e: "Primary active transport directly uses an energy source such as ATP. Secondary active transport harnesses an ion gradient established by energy-dependent transport."
-  },
-  {
-    q: "Which statement about the endoplasmic reticulum is correct?",
-    o: [
-      "Smooth ER is the principal site of ribosomal RNA assembly",
-      "Rough ER is involved in synthesis of many secreted and membrane proteins",
-      "Rough ER contains the cell's entire genome",
-      "Smooth ER is the only site of ATP generation",
-      "Both forms function exclusively in extracellular digestion"
-    ],
-    a: 1,
-    e: "Ribosomes associated with rough ER synthesise many proteins destined for secretion, membranes and the endomembrane system."
-  },
-  {
-    q: "What is the primary physiological importance of maintaining transmembrane ion gradients?",
-    o: [
-      "They prevent every molecule from entering cells",
-      "They eliminate the need for enzymes",
-      "They support electrical signalling, transport processes and cellular homeostasis",
-      "They make the plasma membrane impermeable to water",
-      "They prevent all changes in cell volume"
-    ],
-    a: 2,
-    e: "Ion gradients support membrane potentials, nerve and muscle excitability, secondary active transport, and regulation of cellular volume and function."
-  }
+const questions=[
+{q:"Which event normally initiates completion of the secondary oocyte's second meiotic division?",o:["Penetration of the oocyte by a spermatozoon","Implantation into the endometrium","Formation of the primitive streak","Closure of the neural tube","Formation of the placenta"],a:0,e:"Sperm entry triggers completion of meiosis II, producing the mature ovum and the second polar body.",t:"Fertilisation"},
+{q:"Fertilisation most commonly occurs in which part of the uterine tube?",o:["Intramural part","Ampulla","Isthmus","Infundibulum","Uterine cavity"],a:1,e:"Fertilisation most commonly occurs in the ampulla, the widest portion of the uterine tube.",t:"Fertilisation"},
+{q:"Which structure begins embedding into the endometrium around 6–7 days after fertilisation?",o:["Morula","Gastrula","Blastocyst","Neural crest","Primitive node"],a:2,e:"The blastocyst attaches to the receptive endometrium and begins implantation approximately 6–7 days after fertilisation.",t:"Implantation"},
+{q:"Which embryonic layer gives rise to the three primary germ layers during gastrulation?",o:["Zona pellucida","Syncytiotrophoblast","Amniotic membrane","Epiblast","Yolk sac endoderm alone"],a:3,e:"Epiblast cells migrate through the primitive streak to form definitive endoderm and mesoderm; the remaining epiblast forms ectoderm.",t:"Gastrulation"},
+{q:"Which germ layer gives rise to the epidermis and central nervous system?",o:["Endoderm","Intermediate mesoderm","Lateral plate mesoderm","Extraembryonic mesoderm","Ectoderm"],a:4,e:"Surface ectoderm forms the epidermis, while neuroectoderm forms the brain and spinal cord.",t:"Germ layers"},
+{q:"Which cell layer is the principal source of hCG in early pregnancy?",o:["Syncytiotrophoblast","Epiblast","Amnion","Fetal adrenal cortex","Corpus albicans"],a:0,e:"The syncytiotrophoblast secretes hCG, which maintains the corpus luteum and progesterone production in early pregnancy.",t:"Placenta"},
+{q:"What is an important role of the zona pellucida before implantation?",o:["It produces progesterone","It helps prevent premature attachment and contributes to the block against polyspermy","It forms the neural tube","It forms the umbilical cord","It produces fetal blood"],a:1,e:"The zona pellucida surrounds the early embryo, helps prevent premature attachment in the uterine tube and undergoes changes after fertilisation that help prevent polyspermy.",t:"Fertilisation"},
+{q:"Which structure develops into the brain and spinal cord?",o:["Primitive endoderm","Trophoblast","Neural tube","Chorionic villus","Allantois"],a:2,e:"The neural tube forms the central nervous system, including the brain and spinal cord.",t:"Neurulation"},
+{q:"Failure of closure of the caudal neuropore is associated with which congenital condition?",o:["Cleft palate","Patent ductus arteriosus","Tetralogy of Fallot","Spina bifida","Cleft lip"],a:3,e:"Failure of caudal neural tube closure can cause spina bifida; cranial neuropore closure defects can cause anencephaly.",t:"Congenital anomalies"},
+{q:"Which structure forms the fetal component of the placenta?",o:["Decidua basalis","Maternal spiral arteries","Myometrium","Yolk sac","Chorion frondosum"],a:4,e:"The chorion frondosum, with its branching chorionic villi, forms the fetal component. The decidua basalis forms the maternal component.",t:"Placenta"},
+{q:"Which hormone is particularly important for maintaining the endometrium during pregnancy?",o:["Progesterone","Oxytocin","Prolactin alone","FSH","Thyroxine"],a:0,e:"Progesterone maintains the endometrium and supports the uterine environment required for pregnancy.",t:"Pregnancy"},
+{q:"Which fetal vessel carries oxygen-rich blood from the placenta toward the fetus?",o:["Umbilical arteries","Umbilical vein","Ductus arteriosus","Pulmonary artery","Superior vena cava"],a:1,e:"The single umbilical vein carries oxygenated, nutrient-rich blood from the placenta toward the fetus.",t:"Fetal circulation"},
+{q:"The ductus venosus allows blood to bypass much of the normal sinusoidal circulation of which organ?",o:["Lung","Kidney","Liver","Heart","Spleen"],a:2,e:"The ductus venosus shunts some umbilical venous blood past hepatic sinusoids toward the inferior vena cava.",t:"Fetal circulation"},
+{q:"Which fetal shunt allows blood to pass from the right atrium to the left atrium?",o:["Ductus arteriosus","Ductus venosus","Umbilical vein","Foramen ovale","Coronary sinus"],a:3,e:"The foramen ovale allows blood to pass from the right atrium to the left atrium, helping bypass the fetal lungs.",t:"Fetal circulation"},
+{q:"What principally promotes functional closure of the foramen ovale after birth?",o:["A sustained fall in systemic pressure alone","Increased placental blood flow","Increased fetal haemoglobin production","Closure of the umbilical arteries alone","Left atrial pressure rising above right atrial pressure"],a:4,e:"The first breaths reduce pulmonary vascular resistance and increase pulmonary venous return, raising left atrial pressure above right atrial pressure.",t:"Birth transition"},
+{q:"Which membrane directly surrounds the amniotic fluid and the developing fetus?",o:["Amnion","Chorion alone","Decidua capsularis","Yolk sac","Allantois"],a:0,e:"The amnion encloses the amniotic cavity and fluid, providing a protective environment for development.",t:"Fetal membranes"},
+{q:"Which structure contributes to early blood-cell formation and vasculogenesis?",o:["Neural crest","Yolk sac","Lens placode","Somites alone","Amniotic epithelium"],a:1,e:"Blood islands in the yolk sac contribute to early haematopoiesis and blood vessel development.",t:"Haematopoiesis"},
+{q:"When is the developing human embryo particularly susceptible to major structural congenital malformations?",o:["Weeks 1–2 only","Weeks 9–12 only","Weeks 3–8","After birth only","The final two weeks only"],a:2,e:"Organogenesis occurs mainly during weeks 3–8 after fertilisation, a period of high susceptibility to many major structural malformations.",t:"Organogenesis"},
+{q:"Which process establishes the three primary germ layers?",o:["Neurulation","Implantation","Cleavage","Gastrulation","Capacitation"],a:3,e:"Gastrulation establishes ectoderm, mesoderm and definitive endoderm.",t:"Gastrulation"},
+{q:"Which tissue gives rise to somites that contribute to vertebrae, skeletal muscle and dermis?",o:["Trophoblast","Surface ectoderm","Endoderm","Extraembryonic endoderm","Paraxial mesoderm"],a:4,e:"Paraxial mesoderm forms somites, which contribute to vertebrae and ribs, skeletal muscle and much of the trunk dermis.",t:"Germ layers"},
+{q:"What characterises cleavage during early embryonic development?",o:["Mitotic divisions without substantial increase in overall embryo size","Gastrulation","Neural tube closure","Placental separation","Fetal breathing movements"],a:0,e:"Cleavage divides the zygote into smaller blastomeres through mitosis without substantial overall growth.",t:"Early development"},
+{q:"Which structure contributes to the development of the umbilical cord?",o:["Neural tube alone","Connecting stalk and extraembryonic tissues","Primitive streak alone","Lens placode","Oropharyngeal membrane"],a:1,e:"The connecting stalk and associated extraembryonic tissues contribute to the developing umbilical cord.",t:"Fetal membranes"},
+{q:"Which placental cell layer is directly bathed by maternal blood in the intervillous space?",o:["Cytotrophoblast alone","Fetal capillary endothelium","Syncytiotrophoblast","Amniotic epithelium","Fetal vascular smooth muscle"],a:2,e:"Maternal blood bathes the syncytiotrophoblast covering chorionic villi. Maternal and fetal blood normally remain separated by a placental barrier.",t:"Placenta"},
+{q:"Which combination forms the chorion?",o:["Amnion alone","Yolk sac","Decidua basalis","Trophoblast and extraembryonic somatic mesoderm","Fetal endoderm alone"],a:3,e:"The chorion comprises trophoblast and extraembryonic somatic mesoderm and contributes to the fetal placenta.",t:"Fetal membranes"},
+{q:"Which cells contribute to the adrenal medulla?",o:["Intermediate mesoderm","Foregut endoderm","Surface ectoderm","Paraxial mesoderm","Neural crest cells"],a:4,e:"Neural crest cells migrate into the developing adrenal gland and differentiate into chromaffin cells of the adrenal medulla.",t:"Organogenesis"},
+{q:"Which statement about dizygotic twins is correct?",o:["They arise from two separately fertilised oocytes and are genetically similar to ordinary siblings","They always share one amniotic sac","They arise from one blastocyst dividing","They are always genetically identical","They must always be the same sex"],a:0,e:"Dizygotic twins result from fertilisation of two oocytes. They are genetically comparable to ordinary siblings and may be of different sexes.",t:"Twins"},
+{q:"A patent ductus arteriosus results from failure of closure of which fetal vessel?",o:["Foramen ovale","Ductus arteriosus","Ductus venosus","Umbilical vein","Vitelline artery"],a:1,e:"The ductus arteriosus connects the pulmonary artery to the aorta in fetal life and normally constricts after birth.",t:"Birth transition"},
+{q:"Which change supports increased uteroplacental blood flow during pregnancy?",o:["Persistent uterine vasoconstriction","Complete closure of spiral arteries","Vascular remodelling and reduced uteroplacental vascular resistance","Loss of uterine arterial supply","Cessation of maternal cardiovascular adaptation"],a:2,e:"Uterine vascular remodelling and a low-resistance uteroplacental circulation support placental exchange.",t:"Pregnancy"},
+{q:"What is the principal role of surfactant produced by type II pneumocytes?",o:["It raises alveolar surface tension","It prevents all pulmonary blood flow","It produces fetal haemoglobin","It reduces surface tension and helps prevent alveolar collapse","It directly closes the foramen ovale"],a:3,e:"Surfactant reduces alveolar surface tension, improving lung compliance and helping prevent alveolar collapse after birth.",t:"Fetal development"},
+{q:"Which event is most directly associated with the primitive streak?",o:["Formation of the zona pellucida","Release of the secondary oocyte","Implantation in the uterine tube","Formation of the corpus luteum","Establishment of body axes and cell migration during gastrulation"],a:4,e:"The primitive streak establishes major body axes and allows epiblast cells to migrate and form mesoderm and definitive endoderm.",t:"Gastrulation"}
 ];
 
-let currentStudent = "";
-let answers = [];
-let startTime = 0;
-let timerInterval = null;
-let submitted = false;
-let currentResult = null;
-let completed = {};
-let results = [];
+let student="",answers=[],startTime=0,timerInterval=null,submitted=false;
+let results=[],attempt=null;
+const KEY="embryology_arena_results_v2";
+const DRAFT="embryology_arena_draft_v2";
+const letters=["A","B","C","D","E"];
 
-const STORAGE_KEY = "cellPhysiologyAssessment_v1";
-
-function loadSavedResults() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    results = Array.isArray(saved) ? saved : [];
-  } catch (e) {
-    results = [];
-  }
-
-  completed = {};
-  results.forEach(r => {
-    if (r && r.name) completed[r.name] = true;
-  });
+function esc(s){
+return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function loadResults(){
+try{const x=JSON.parse(localStorage.getItem(KEY)||"[]");results=Array.isArray(x)?x:[]}catch(e){results=[]}
+}
+function saveResults(){
+try{localStorage.setItem(KEY,JSON.stringify(results))}catch(e){}
+}
+function completed(name){return results.some(r=>r.name===name)}
+function latest(name){return results.filter(r=>r.name===name).slice(-1)[0]}
+function saveDraft(){
+try{
+localStorage.setItem(DRAFT,JSON.stringify({student,answers,startTime}))
+}catch(e){}
+}
+function clearDraft(){
+try{localStorage.removeItem(DRAFT)}catch(e){}
 }
 
-function saveResults() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
-  } catch (e) {
-    alert("Results are available in this session, but could not be saved to device storage.");
-  }
+document.getElementById("student").addEventListener("change",updateSetup);
+function updateSetup(){
+const name=document.getElementById("student").value;
+const btn=document.getElementById("startBtn");
+const prev=document.getElementById("previous");
+btn.disabled=!name;
+btn.textContent=name?(completed(name)?"Retake Assessment ↻":"Start Assessment →"):"Select a student first";
+const r=name?latest(name):null;
+if(r){
+prev.classList.remove("hidden");
+prev.textContent="Previous attempt: "+name+" scored "+r.finalScore+"/30 ("+r.percentage.toFixed(1)+"%). You may start a new attempt.";
+}else{prev.classList.add("hidden");prev.textContent=""}
 }
 
-function updateSetup() {
-  const name = document.getElementById("student").value;
-  const previous = results.filter(r => r.name === name);
-
-  const box = document.getElementById("previousResults");
-
-  if (previous.length) {
-    const latest = previous[previous.length - 1];
-    box.classList.remove("hidden");
-    box.innerHTML =
-      "<strong>Previous attempt found</strong><br>" +
-      escapeHTML(name) + ": " + latest.finalScore + "/30 (" +
-      latest.percentage.toFixed(1) + "%).";
-  } else {
-    box.classList.add("hidden");
-    box.textContent = "";
-  }
-
-  const other = name === "Eltone" ? "Yvonne" : "Eltone";
-
-  document.getElementById("startBtn").textContent =
-    completed[name] ? "Retake Assessment ↻" : "Start Assessment →";
-
-  if (completed[other]) {
-    document.getElementById("startBtn").textContent =
-      completed[name] ? "Retake Assessment ↻" : "Start Assessment →";
-  }
+function startTest(){
+const selected=document.getElementById("student").value;
+if(!selected)return;
+let draft=null;
+try{draft=JSON.parse(localStorage.getItem(DRAFT)||"null")}catch(e){}
+if(draft&&draft.student===selected&&Array.isArray(draft.answers)&&draft.answers.length===30&&confirm("A saved unfinished attempt was found for "+selected+". Resume it?")){
+student=selected;answers=draft.answers;startTime=draft.startTime;
+}else{
+student=selected;answers=Array(30).fill(null);startTime=Date.now();saveDraft();
+}
+submitted=false;
+document.getElementById("setup").classList.add("hidden");
+document.getElementById("results").classList.add("hidden");
+document.getElementById("exam").classList.remove("hidden");
+document.getElementById("studentLabel").textContent="Student: "+student;
+renderQuestions();renderNavigator();updateProgress();updateTimer();
+if(timerInterval)clearInterval(timerInterval);
+timerInterval=setInterval(updateTimer,250);
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
-document.getElementById("student").addEventListener("change", updateSetup);
+function renderQuestions(){
+const list=document.getElementById("questionList");list.innerHTML="";
+questions.forEach((q,i)=>{
+const section=document.createElement("section");section.className="question";section.id="question-"+i;
+const number=document.createElement("div");number.className="q-number";number.textContent="QUESTION "+(i+1)+" / 30 · 1 MARK";
+const title=document.createElement("h3");title.textContent=q.q;
+section.append(number,title);
+q.o.forEach((choice,j)=>{
+const label=document.createElement("label");label.className="option";
+const radio=document.createElement("input");radio.type="radio";radio.name="q"+i;radio.value=j;
+radio.checked=answers[i]===j;
+radio.addEventListener("change",()=>{
+if(submitted)return;
+answers[i]=j;updateProgress();renderNavigator();saveDraft();
+});
+const span=document.createElement("span");span.textContent=letters[j]+". "+choice;
+label.append(radio,span);section.append(label);
+});
+list.append(section);
+});
+}
+function renderNavigator(){
+const nav=document.getElementById("navigator");nav.innerHTML="";
+questions.forEach((q,i)=>{
+const b=document.createElement("button");b.className="navbtn";
+if(answers[i]!==null)b.classList.add("answered");
+b.textContent=i+1;b.title="Question "+(i+1);
+b.onclick=()=>{document.getElementById("question-"+i).scrollIntoView({behavior:"smooth",block:"start"})};
+nav.append(b);
+});
+}
+function updateProgress(){
+const n=answers.filter(a=>a!==null).length;
+document.getElementById("progressText").textContent=n+"/30 answered";
+document.getElementById("progressFill").style.width=(n/30*100)+"%";
+document.getElementById("unansweredNotice").textContent=
+n===30?"All questions answered. You may submit.":(30-n)+" unanswered question(s) will score zero.";
+}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function updateTimer(){
+if(submitted)return;
+const seconds=Math.floor((Date.now()-startTime)/1000);
+const el=document.getElementById("timer");el.textContent=fmt(seconds);
+el.classList.toggle("red",seconds>=900);
+if(seconds>=960)submitTest(true);
+}
+function goTop(){window.scrollTo({top:0,behavior:"smooth"})}
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, ch => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[ch]);
+function submitTest(auto){
+if(submitted)return;
+const missing=answers.filter(a=>a===null).length;
+if(!auto&&!confirm(missing?"You have "+missing+" unanswered questions. Submit anyway?":"Submit your assessment now?"))return;
+submitted=true;if(timerInterval)clearInterval(timerInterval);timerInterval=null;
+const elapsed=Math.floor((Date.now()-startTime)/1000);
+const raw=questions.reduce((s,q,i)=>s+(answers[i]===q.a?1:0),0);
+const penalty=elapsed>=960?5:0;
+attempt={name:student,answers:[...answers],raw,penalty,finalScore:Math.max(0,raw-penalty),percentage:Math.max(0,raw-penalty)/30*100,elapsed,late:elapsed>=960,date:new Date().toLocaleString()};
+results.push(attempt);saveResults();clearDraft();
+document.getElementById("exam").classList.add("hidden");
+document.getElementById("results").classList.remove("hidden");
+showResults(attempt,auto);window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function startTest() {
-  if (timerInterval) clearInterval(timerInterval);
+function comment(s){
+if(s===30)return"Outstanding! A perfect score demonstrating excellent mastery.";
+if(s>=25)return"Excellent performance. You demonstrate strong understanding.";
+if(s>=20)return"Very good work. Revise a few weaker areas.";
+if(s>=15)return"Satisfactory foundation. More revision is recommended.";
+if(s>=10)return"Keep practising. Revisit the core embryology concepts.";
+if(s>=5)return"Limited mastery. Review your notes and practise more questions.";
+return"Further revision is needed. Start with the fundamentals and build gradually.";
+}
+function bandComment(n){
+if(n===0)return"Revisit the fundamentals and build your foundation.";
+if(n===5)return"Basic understanding is emerging; more study is needed.";
+if(n===10)return"Strengthen your understanding of developmental processes.";
+if(n===15)return"Continue practising the application of embryology concepts.";
+if(n===20)return"Good understanding of many important concepts.";
+return"Excellent to outstanding mastery of the assessed concepts.";
+}
+function showResults(r,auto){
+document.getElementById("resultName").textContent="Student: "+r.name+" · "+r.date;
+document.getElementById("scoreDisplay").textContent=r.finalScore+"/30";
+document.getElementById("percentageDisplay").textContent="Final percentage: "+r.percentage.toFixed(1)+"%";
+document.getElementById("rawScore").textContent=r.raw+"/30";
+document.getElementById("penalty").textContent=r.penalty+" marks";
+document.getElementById("correctCount").textContent=r.raw;
+document.getElementById("unansweredCount").textContent=r.answers.filter(a=>a===null).length;
+document.getElementById("overallRemark").innerHTML="<strong>Overall feedback</strong><br>"+esc(comment(r.finalScore));
+document.getElementById("timeRemark").innerHTML="<div class='"+(r.late?"warning":"notice")+"'><strong>Time used:</strong> "+fmt(r.elapsed)+"<br>"+
+(r.late?"16-minute limit reached. A 5-mark penalty was applied.":r.elapsed>=900?"15-minute target exceeded; no penalty because 16 minutes was not reached.":"Completed within the 15-minute target.")+
+(auto?"<br>Assessment submitted automatically.":"")+"</div>";
 
-  currentStudent = document.getElementById("student").value;
-  answers = Array(questions.length).fill(null);
-  startTime = Date.now();
-  submitted = false;
-  currentResult = null;
-
-  document.getElementById("setup").classList.add("hidden");
-  document.getElementById("results").classList.add("hidden");
-  document.getElementById("exam").classList.remove("hidden");
-
-  document.getElementById("studentLabel").textContent =
-    "Student: " + currentStudent;
-
-  renderQuestions();
-  updateProgress();
-  updateTimer();
-
-  timerInterval = setInterval(updateTimer, 250);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+const bands=document.getElementById("intervalRemarks");bands.innerHTML="";
+for(let n=0;n<=25;n+=5){
+const upper=n===25?30:n+4;
+const reached=r.finalScore>=n&&r.finalScore<=upper;
+const d=document.createElement("div");d.className="remark";
+d.innerHTML="<strong>"+n+"–"+upper+" marks:</strong> "+esc(bandComment(n))+(reached?" <strong>← YOUR BAND</strong>":"");
+bands.append(d);
+}
+renderReview(r);renderRegister();renderLeaderboard();
+const other=r.name==="Eltone"?"Yvonne":"Eltone";
+document.getElementById("nextMessage").textContent=completed(other)?
+"Both students have at least one recorded attempt. You may start another attempt.":
+other+" can now take the assessment on this device.";
+document.getElementById("nextBtn").textContent=completed(other)?"New Attempt ↻":"Continue to "+other+" →";
 }
 
-function renderQuestions() {
-  const list = document.getElementById("questionList");
-  list.innerHTML = "";
-
-  questions.forEach((item, i) => {
-    const section = document.createElement("section");
-    section.className = "question";
-    section.id = "question-" + i;
-
-    const title = document.createElement("h3");
-    title.textContent = item.q;
-
-    const number = document.createElement("div");
-    number.className = "q-number";
-    number.textContent = "Question " + (i + 1) + " · 1 mark";
-
-    section.appendChild(number);
-    section.appendChild(title);
-
-    item.o.forEach((choice, j) => {
-      const label = document.createElement("label");
-      label.className = "option";
-
-      const radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = "q" + i;
-      radio.value = String(j);
-
-      radio.addEventListener("change", () => {
-        if (submitted) return;
-        answers[i] = j;
-        updateProgress();
-      });
-
-      const text = document.createElement("span");
-      text.textContent = String.fromCharCode(65 + j) + ". " + choice;
-
-      label.appendChild(radio);
-      label.appendChild(text);
-      section.appendChild(label);
-    });
-
-    list.appendChild(section);
-  });
+function renderReview(r){
+const box=document.getElementById("reviewList");box.innerHTML="";
+questions.forEach((q,i)=>{
+const ok=r.answers[i]===q.a;
+const yours=r.answers[i]===null?"Not answered":letters[r.answers[i]]+". "+q.o[r.answers[i]];
+const key=letters[q.a]+". "+q.o[q.a];
+const d=document.createElement("div");d.className="review-item";
+d.innerHTML="<strong>Q"+(i+1)+". "+esc(q.q)+"</strong><br>"+
+"<span class='"+(ok?"correct":"incorrect")+"'>"+(ok?"✓ Correct":"✗ Incorrect")+"</span><br>"+
+"<span class='small'>Your answer: "+esc(yours)+"</span><br>"+
+"<span class='correct'>Correct answer: "+esc(key)+"</span><br>"+
+"<span class='small'>Topic: "+esc(q.t)+"</span><p>"+esc(q.e)+"</p>";
+box.append(d);
+});
 }
-
-function updateProgress() {
-  const count = answers.filter(a => a !== null).length;
-  document.getElementById("progressText").textContent =
-    count + " of 30 answered";
-
-  document.getElementById("progressFill").style.width =
-    (count / 30 * 100) + "%";
-
-  document.getElementById("unansweredNotice").textContent =
-    count === 30
-      ? "All questions answered. You may submit your assessment."
-      : (30 - count) + " question(s) unanswered. They will receive zero marks.";
+function renderRegister(){
+const box=document.getElementById("register");box.innerHTML="";
+if(!results.length){box.textContent="No completed attempts.";return}
+const table=document.createElement("table");
+table.innerHTML="<thead><tr><th>Student</th><th>Date</th><th>Raw</th><th>Penalty</th><th>Final</th><th>%</th><th>Time</th></tr></thead>";
+const body=document.createElement("tbody");
+results.forEach(r=>{
+const tr=document.createElement("tr");
+[r.name,r.date,r.raw+"/30",r.penalty+"",r.finalScore+"/30",r.percentage.toFixed(1)+"%",fmt(r.elapsed)].forEach(v=>{
+const td=document.createElement("td");td.textContent=v;tr.append(td);
+});body.append(tr);
+});
+table.append(body);box.append(table);
 }
-
-function updateTimer() {
-  if (submitted) return;
-
-  const elapsed = Math.floor((Date.now() - startTime) / 1000);
-  const minutes = Math.floor(elapsed / 60);
-  const seconds = elapsed % 60;
-
-  const display = document.getElementById("timer");
-  display.textContent =
-    String(minutes).padStart(2, "0") + ":" +
-    String(seconds).padStart(2, "0");
-
-  if (elapsed >= 900) {
-    display.classList.add("red");
-  } else {
-    display.classList.remove("red");
-  }
-
-  if (elapsed >= 960) {
-    submitTest(true);
-  }
+function renderLeaderboard(){
+const box=document.getElementById("leaderboard");
+const e=latest("Eltone"),y=latest("Yvonne");
+let html="<table><thead><tr><th>Student</th><th>Best score</th><th>Percentage</th><th>Attempts</th></tr></thead><tbody>";
+for(const name of ["Eltone","Yvonne"]){
+const all=results.filter(r=>r.name===name);
+const best=all.length?Math.max(...all.map(r=>r.finalScore)):null;
+const pct=best===null?"—":(best/30*100).toFixed(1)+"%";
+html+="<tr><td>"+esc(name)+"</td><td>"+(best===null?"Not attempted":best+"/30")+"</td><td>"+pct+"</td><td>"+all.length+"</td></tr>";
 }
-
-function goToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+html+="</tbody></table>";
+if(e&&y){
+const eb=Math.max(...results.filter(r=>r.name==="Eltone").map(r=>r.finalScore));
+const yb=Math.max(...results.filter(r=>r.name==="Yvonne").map(r=>r.finalScore));
+html+="<div class='notice'><strong>"+(eb===yb?"It's a tie! 🏆":eb>yb?"Eltone leads! 🥇":"Yvonne leads! 🥇")+"</strong><br>Difference: "+Math.abs(eb-yb)+" mark(s), using each student's best recorded result.</div>";
+}else html+="<p class='small'>Both students must complete an assessment to compare scores.</p>";
+box.innerHTML=html;
 }
-
-function submitTest(automatic) {
-  if (submitted) return;
-
-  const unanswered = answers.filter(a => a === null).length;
-
-  if (!automatic) {
-    const message = unanswered > 0
-      ? "You have " + unanswered + " unanswered question(s). Submit anyway?"
-      : "Are you sure you want to submit your assessment?";
-
-    if (!confirm(message)) return;
-  }
-
-  submitted = true;
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
-
-  const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-  const late = elapsedSeconds >= 960;
-  const raw = questions.reduce((sum, q, i) =>
-    sum + (answers[i] === q.a ? 1 : 0), 0);
-
-  const deduction = late ? 5 : 0;
-  const finalScore = Math.max(0, raw - deduction);
-  const percentage = finalScore / 30 * 100;
-
-  currentResult = {
-    name: currentStudent,
-    rawScore: raw,
-    penalty: deduction,
-    finalScore,
-    percentage,
-    elapsedSeconds,
-    late,
-    answers: [...answers],
-    date: new Date().toLocaleString()
-  };
-
-  results.push(currentResult);
-  completed[currentStudent] = true;
-  saveResults();
-
-  document.getElementById("exam").classList.add("hidden");
-  document.getElementById("results").classList.remove("hidden");
-
-  showResult(currentResult, automatic);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+function printResults(){window.print()}
+function showRegister(){document.getElementById("register").scrollIntoView({behavior:"smooth"})}
+function nextStudent(){
+const other=student==="Eltone"?"Yvonne":"Eltone";
+document.getElementById("results").classList.add("hidden");
+document.getElementById("setup").classList.remove("hidden");
+document.getElementById("student").value=completed(other)?"":other;
+updateSetup();window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function formatTime(seconds) {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return String(m).padStart(2, "0") + ":" +
-         String(s).padStart(2, "0");
+function backHome(){
+document.getElementById("results").classList.add("hidden");
+document.getElementById("setup").classList.remove("hidden");
+document.getElementById("student").value="";updateSetup();
+window.scrollTo({top:0,behavior:"smooth"});
 }
-
-function performanceComment(score) {
-  if (score >= 30) return "Outstanding! Perfect mastery of this assessment.";
-  if (score >= 25) return "Excellent performance. You demonstrate strong understanding.";
-  if (score >= 20) return "Very good work. Review a few weaker areas.";
-  if (score >= 15) return "Satisfactory foundation, but more revision is needed.";
-  if (score >= 10) return "Below the desired level. Revise the core concepts carefully.";
-  if (score >= 5) return "Limited mastery. Revisit your notes and practise more MCQs.";
-  return "Needs substantial improvement. Start with the fundamental concepts.";
-}
-
-function showResult(r, automatic) {
-  document.getElementById("resultName").textContent =
-    "Student: " + r.name + " | Completed: " + r.date;
-
-  document.getElementById("scoreDisplay").textContent =
-    r.finalScore + "/30";
-
-  document.getElementById("percentageDisplay").textContent =
-    "Final percentage: " + r.percentage.toFixed(1) + "%";
-
-  document.getElementById("rawScore").textContent = r.rawScore + "/30";
-  document.getElementById("penalty").textContent =
-    r.penalty + (r.penalty === 1 ? " mark" : " marks");
-  document.getElementById("correctCount").textContent = r.rawScore;
-  document.getElementById("unansweredCount").textContent =
-    r.answers.filter(a => a === null).length;
-
-  document.getElementById("overallRemark").innerHTML =
-    "<strong>Overall comment</strong><br>" +
-    escapeHTML(performanceComment(r.finalScore));
-
-  document.getElementById("timeRemark").innerHTML =
-    "<div class='" + (r.late ? "warning" : "notice") + "'>" +
-    "<strong>Time used:</strong> " + formatTime(r.elapsedSeconds) + "<br>" +
-    (r.late
-      ? "The 16-minute limit was reached. A 5-mark penalty has been applied."
-      : r.elapsedSeconds >= 900
-        ? "The 15-minute target was exceeded, but the 16-minute penalty threshold was not reached."
-        : "Completed within the 15-minute target.") +
-    (automatic ? "<br>Assessment submitted automatically." : "") +
-    "</div>";
-
-  const interval = document.getElementById("intervalRemarks");
-  interval.innerHTML = "";
-
-  for (let lower = 0; lower <= 25; lower += 5) {
-    const upper = lower + 4;
-    const isTop = lower === 25;
-    const reached = r.finalScore >= lower &&
-      (isTop ? r.finalScore <= 30 : r.finalScore <= upper);
-
-    const div = document.createElement("div");
-    div.className = "remark";
-    div.innerHTML =
-      "<strong>" + lower + (isTop ? "–30" : "–" + upper) +
-      " marks</strong> — " +
-      escapeHTML(intervalComment(lower, upper, isTop)) +
-      (reached ? " <strong>← Your score</strong>" : "");
-
-    interval.appendChild(div);
-  }
-
-  renderReview(r);
-  renderRegister();
-
-  const other = r.name === "Eltone" ? "Yvonne" : "Eltone";
-  const otherDone = completed[other];
-
-  document.getElementById("nextMessage").textContent = otherDone
-    ? "Both students have completed at least one attempt. You can retake either assessment."
-    : other + " can now take the assessment on this device.";
-
-  document.getElementById("nextBtn").textContent =
-    otherDone ? "Take Another Attempt" : "Continue to " + other + " →";
-}
-
-function intervalComment(lower, upper, isTop) {
-  if (lower === 0) return "Revisit the fundamentals and begin again.";
-  if (lower === 5) return "Basic understanding is emerging; further study is needed.";
-  if (lower === 10) return "Develop a stronger grasp of core cellular mechanisms.";
-  if (lower === 15) return "A developing foundation; practise applying concepts.";
-  if (lower === 20) return "Good understanding of many important concepts.";
-  if (isTop) return "Excellent to outstanding mastery of the assessed concepts.";
-  return "Very good progress. Continue strengthening difficult topics.";
-}
-
-function renderReview(r) {
-  const box = document.getElementById("reviewList");
-  box.innerHTML = "";
-
-  questions.forEach((q, i) => {
-    const div = document.createElement("div");
-    div.className = "review-item";
-
-    const correct = r.answers[i] === q.a;
-    const yourAnswer = r.answers[i] === null
-      ? "Not answered"
-      : String.fromCharCode(65 + r.answers[i]) + ". " + q.o[r.answers[i]];
-
-    const correctAnswer =
-      String.fromCharCode(65 + q.a) + ". " + q.o[q.a];
-
-    div.innerHTML =
-      "<strong>Q" + (i + 1) + ". " + escapeHTML(q.q) + "</strong><br>" +
-      "<span class='" + (correct ? "correct" : "incorrect") + "'>" +
-      (correct ? "✓ Correct" : "✗ Incorrect") + "</span><br>" +
-      "<span class='small'>Your answer: " + escapeHTML(yourAnswer) + "</span><br>" +
-      "<span class='correct'>Correct answer: " + escapeHTML(correctAnswer) + "</span><br>" +
-      "<p>" + escapeHTML(q.e) + "</p>";
-
-    box.appendChild(div);
-  });
-}
-
-function renderRegister() {
-  const box = document.getElementById("register");
-  box.innerHTML = "";
-
-  if (!results.length) {
-    box.textContent = "No completed attempts yet.";
-    return;
-  }
-
-  const table = document.createElement("table");
-  table.style.width = "100%";
-  table.style.borderCollapse = "collapse";
-
-  const headers = ["Student", "Raw", "Penalty", "Final", "%", "Time"];
-
-  const thead = document.createElement("thead");
-  const headRow = document.createElement("tr");
-
-  headers.forEach(text => {
-    const th = document.createElement("th");
-    th.textContent = text;
-    th.style.padding = "8px 4px";
-    th.style.borderBottom = "2px solid #dce5f1";
-    th.style.textAlign = "left";
-    headRow.appendChild(th);
-  });
-
-  thead.appendChild(headRow);
-  table.appendChild(thead);
-
-  const tbody = document.createElement("tbody");
-
-  results.forEach(r => {
-    const tr = document.createElement("tr");
-
-    [
-      r.name,
-      r.rawScore + "/30",
-      "-" + r.penalty,
-      r.finalScore + "/30",
-      r.percentage.toFixed(1) + "%",
-      formatTime(r.elapsedSeconds)
-    ].forEach(value => {
-      const td = document.createElement("td");
-      td.textContent = value;
-      td.style.padding = "8px 4px";
-      td.style.borderBottom = "1px solid #dce5f1";
-      td.style.fontSize = "12px";
-      tr.appendChild(td);
-    });
-
-    tbody.appendChild(tr);
-  });
-
-  table.appendChild(tbody);
-  box.appendChild(table);
-}
-
-function nextStudent() {
-  const other = currentStudent === "Eltone" ? "Yvonne" : "Eltone";
-
-  document.getElementById("results").classList.add("hidden");
-  document.getElementById("setup").classList.remove("hidden");
-  document.getElementById("student").value = completed[other]
-    ? currentStudent
-    : other;
-
-  updateSetup();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function showRegister() {
-  document.getElementById("register").scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-}
-
-function downloadResults() {
-  if (!results.length) {
-    alert("There are no results to download yet.");
-    return;
-  }
-
-  const headers = [
-    "Student", "Date", "Raw Score", "Penalty",
-    "Final Score", "Percentage", "Time Seconds", "Late"
-  ];
-
-  const rows = results.map(r => [
-    r.name, r.date, r.rawScore, r.penalty,
-    r.finalScore, r.percentage.toFixed(1),
-    r.elapsedSeconds, r.late ? "Yes" : "No"
-  ]);
-
-  const csv = [headers, ...rows].map(row =>
-    row.map(value =>
-      '"' + String(value).replace(/"/g, '""') + '"'
-    ).join(",")
-  ).join("\r\n");
-
-  const blob = new Blob(["\uFEFF" + csv], {
-    type: "text/csv;charset=utf-8;"
-  });
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "Cell_Physiology_Results.csv";
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
-function printResults() {
-  window.print();
-}
-
-loadSavedResults();
-updateSetup();
+loadResults();updateSetup();
 </script>
 </body>
 </html>
