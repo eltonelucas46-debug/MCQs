@@ -4,538 +4,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102A35">
-<title>Embryology Arena | Eltone vs Yvonne</title>
-
+<meta name="theme-color" content="#102d35">
+<title>Lower Limb Anatomy | MBChB</title>
 <style>
-:root{
---navy:#102A35;--teal:#167D70;--deep:#10594F;
---mint:#72E3C0;--ivory:#F7F5EF;--white:#fff;
---text:#243B43;--muted:#71838A;--border:#DCE7E3;
---green:#16804A;--red:#D84C55;--gold:#D6B15D;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+:root{--deep:#102d35;--teal:#087f78;--mint:#d9f3e9;--bg:#f2f6f5;--ink:#18333a;--muted:#65777c;--line:#dce7e5;--red:#c62828}
 *{box-sizing:border-box}
-body{
-margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);
-background:radial-gradient(ellipse at 5% 5%,#DDF2E9,transparent 38%),
-radial-gradient(ellipse at 95% 50%,#E5EEE6,transparent 32%),var(--ivory);
-line-height:1.65
-}
-button,select,input{font:inherit}
-button{cursor:pointer;transition:.2s}
-button:focus-visible,select:focus-visible,input:focus-visible{
-outline:3px solid #72E3C0;outline-offset:3px
-}
-header{
-background:linear-gradient(130deg,#102A35,#10594F);
-color:white;text-align:center;padding:24px 12px;
-border-bottom:3px solid var(--mint)
-}
-header h1{font-size:clamp(20px,4vw,30px);margin:0;font-weight:800}
-header p{margin:4px;color:#D2E8E1;font-size:13px}
-.container{width:min(920px,94%);margin:22px auto}
-.card{
-background:#ffffffed;border:1px solid var(--border);
-border-radius:18px;padding:22px;margin-bottom:18px;
-box-shadow:0 10px 32px #102a350c
-}
-h2,h3{font-family:Manrope,Arial,sans-serif;color:var(--navy);line-height:1.4}
-h2{font-size:22px}
-.small{font-size:12px;color:var(--muted)}
-.hero{
-position:relative;isolation:isolate;overflow:hidden;text-align:center;
-color:white;background:linear-gradient(135deg,#102A35,#10594F);
-border-radius:20px;padding:32px 12px;margin-bottom:22px
-}
-.hero:before,.hero:after{
-content:"";position:absolute;z-index:-1;width:180px;height:180px;
-border:1px solid #72E3C035;border-radius:50%;pointer-events:none
-}
-.hero:before{left:-75px;top:-100px;box-shadow:0 0 0 25px #72E3C010,0 0 0 50px #72E3C008}
-.hero:after{right:-75px;bottom:-110px;box-shadow:0 0 0 25px #72E3C010}
-.versus{
-font-size:clamp(25px,6vw,46px);font-weight:900;
-letter-spacing:-1px;animation:entrance .8s ease-out both
-}
-.eltone{color:#72E3C0}.yvonne{color:#F3E8B4}
-.vs{display:inline-block;color:white;font-size:.65em;margin:0 6px;animation:pulse 1.6s infinite}
-.hero h2{color:white;font-size:23px;margin:14px 0 4px}
-.hero p{color:#D6EBE5;font-size:13px;letter-spacing:.5px}
-@keyframes entrance{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{50%{transform:scale(1.12);color:var(--mint)}}
-button{
-border:0;border-radius:10px;background:var(--teal);color:white;
-font-weight:700;padding:12px 17px
-}
-button:hover:not(:disabled){background:var(--deep);transform:translateY(-1px)}
-button:disabled{opacity:.4;cursor:not-allowed}
-.secondary{background:#E8F1ED!important;color:var(--navy)!important}
-.danger{background:var(--red)}
-select{
-width:100%;padding:13px;border:1px solid #C7DAD4;
-border-radius:10px;background:white;color:var(--navy)
-}
-.field{display:block;font-weight:700;margin:13px 0 6px}
-.notice{background:#EAF5F0;border-left:4px solid var(--teal);padding:13px;border-radius:9px;margin:14px 0}
-.warning{background:#FCE9E8;color:#A32935;padding:13px;border-radius:9px}
-.hidden{display:none!important}
-.topbar{
-position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;
-align-items:center;flex-wrap:wrap;gap:10px;background:#fffffff5;
-backdrop-filter:blur(12px);border:1px solid var(--border);
-border-radius:13px;padding:12px;margin-bottom:12px
-}
-.timer{font-size:23px;font-weight:900;color:var(--green);font-variant-numeric:tabular-nums}
-.timer.red{color:var(--red);animation:flash .8s infinite}
-@keyframes flash{50%{opacity:.45}}
-.progress-track{height:7px;background:#DDE9E3;border-radius:10px;overflow:hidden;margin:12px 0 18px}
-.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--mint));transition:width .2s}
-.navigator{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 18px}
-.navbtn{
-width:38px;height:38px;padding:0;border-radius:9px;
-background:#E9EEEB;color:var(--navy);font-size:13px
-}
-.navbtn.answered{background:#CDEFE0;color:#10594F}
-.navbtn.current{outline:2px solid var(--teal);outline-offset:2px}
-.question{
-background:white;border:1px solid var(--border);border-radius:15px;
-padding:20px;margin-bottom:15px;scroll-margin-top:150px
-}
-.q-number{font-size:11px;color:var(--teal);font-weight:900;letter-spacing:1px}
-.question h3{font-size:16px}
-.option{
-display:flex;align-items:flex-start;gap:10px;padding:12px;margin:8px 0;
-border:1px solid #E0E9E4;border-radius:10px;cursor:pointer
-}
-.option:hover{background:#F3F8F5;border-color:#A4D4C5}
-.option:has(input:checked){border-color:var(--teal);background:#EAF5F0}
-.option input{margin-top:5px;accent-color:var(--teal);flex-shrink:0}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
-.stat{background:#F0F6F2;border:1px solid #E0EBE4;border-radius:12px;padding:13px;overflow-wrap:anywhere}
-.stat strong{display:block;font-size:23px;color:var(--navy)}
-.score{font-size:44px;font-weight:900;color:var(--teal)}
-.remark{background:#F1F6F3;border-left:4px solid var(--teal);padding:12px;margin:9px 0;border-radius:8px}
-.review-item{padding:15px 0;border-bottom:1px solid var(--border);overflow-wrap:anywhere}
-.correct{color:var(--green);font-weight:800}
-.incorrect{color:var(--red);font-weight:800}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:450px}
-td,th{text-align:left;padding:9px;border-bottom:1px solid var(--border);font-size:12px}
-footer{text-align:center;padding:22px;color:var(--muted);font-size:12px}
-@media(max-width:500px){
-.card{padding:16px}.hero{padding:27px 8px}.question{padding:15px}
-.score{font-size:36px}.navbtn{width:34px;height:34px}
-}
-@media(prefers-reduced-motion:reduce){
-*,*::before,*::after{animation:none!important;transition:none!important}
-}
-@media print{
-body{background:white;color:black;font-size:10px}
-header{background:white;color:black;border:0;padding:8px}
-header p{color:black}
-.container{width:100%;margin:0}
-#setup,#exam,footer,.no-print{display:none!important}
-#results{display:block!important}
-#results .card{box-shadow:none;border:1px solid #aaa;padding:10px;margin:7px 0}
-#results button{display:none!important}
-.review-item{break-inside:avoid}
-.score{font-size:25px}
-.stats{gap:5px;margin:7px 0}
-.stat{padding:5px}
-}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif}
+header{padding:27px 17px 30px;text-align:center;color:white;background:linear-gradient(135deg,#102d35,#126d68)}
+.brand{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#a8e9d7;font-weight:700}
+header h1{font:800 clamp(27px,6vw,40px) Manrope,sans-serif;margin:13px 0}
+header p{max-width:600px;margin:auto;line-height:1.6;color:#d7e8e7;font-size:14px}
+main{max-width:850px;margin:auto;padding:18px 12px 40px}
+.card{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;margin-bottom:14px;box-shadow:0 5px 22px #18333a08}
+h2{font:700 21px Manrope,sans-serif;margin:0 0 12px}
+h3{margin:0 0 10px}
+p{line-height:1.6}
+.muted{font-size:13px;color:var(--muted)}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}
+.pill{background:#e4f5ef;color:#126b60;padding:7px 10px;border-radius:30px;font-size:11px;font-weight:700}
+.notice{background:#fff6df;border:1px solid #f0dfad;border-radius:11px;padding:12px;font-size:13px;line-height:1.65}
+.btn{border:0;border-radius:10px;padding:12px 16px;background:var(--teal);color:white;font-weight:700;cursor:pointer}
+.secondary{background:#e4efed;color:var(--deep)}
+.full{width:100%}
+.timerbox{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:#ffffffed;border:1px solid var(--line);border-radius:13px;margin-bottom:13px}
+.timer{font-size:23px;font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums}
+.timer.warning{color:var(--red)}
+.progress{height:6px;background:#e3ecea;border-radius:9px;overflow:hidden;margin-top:9px}
+.progress div{height:100%;width:0;background:var(--teal);transition:width .2s}
+.question{background:white;border:1px solid var(--line);border-radius:15px;padding:15px;margin:13px 0}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:11px}
+.qnum{background:var(--deep);color:white;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}
+.marks{font-size:12px;color:var(--muted)}
+.prompt{font-weight:600;line-height:1.65;margin:10px 0 14px}
+.option{display:flex;align-items:flex-start;gap:10px;padding:11px;border:1px solid var(--line);border-radius:10px;margin:8px 0;cursor:pointer;line-height:1.5;font-size:14px}
+.option:has(input:checked){border-color:var(--teal);background:#eff9f5}
+.option input{margin-top:4px;accent-color:var(--teal);flex-shrink:0}
+.option.correct{background:#e2f5e9;border-color:#16804a}
+.option.incorrect{background:#fde8e8;border-color:#c62828}
+.feedback{display:none;padding:12px;border-radius:9px;background:#eef8f3;line-height:1.6;font-size:13px;margin-top:10px}
+.feedback.show{display:block}
+#exam,#results{display:none}
+.score{font:800 48px Manrope,sans-serif;color:var(--teal)}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+@media print{body{background:white}header{background:white;color:var(--deep)}header p,.brand{color:var(--deep)}#setup,#exam,footer,.no-print{display:none!important}#results{display:block!important}.card,.question{box-shadow:none;break-inside:avoid}.feedback{display:block!important}}
 </style>
 </head>
-
 <body>
 <header>
-<h1>🧬 EMBRYOLOGY ARENA</h1>
-<p>PREGNANCY &amp; HUMAN DEVELOPMENT</p>
-<p>Medical Sciences • University Assessment Portal</p>
+  <div class="brand">Medical School Revision Series</div>
+  <h1>Lower Limb Anatomy 🦵🏼</h1>
+  <p>MBChB-Level Challenge · Clinical anatomy, osteology, muscles, nerves, vessels and regional anatomy.</p>
 </header>
 
-<main class="container">
-
+<main>
 <section id="setup" class="card">
-<div class="hero">
-<p>THE ULTIMATE ACADEMIC SHOWDOWN</p>
-<div class="versus"><span class="eltone">ELTONE</span> <span class="vs">VS</span> <span class="yvonne">YVONNE</span></div>
-<h2>Who Masters Embryology?</h2>
-<p>TWO MINDS. THIRTY QUESTIONS. ONE CHALLENGE.</p>
-</div>
-
-<h2>Pregnancy &amp; Human Development</h2>
-<p>Test your understanding of fertilisation, implantation, gastrulation, organogenesis, placental development, fetal circulation and pregnancy.</p>
-
-<div class="notice">
-<strong>ASSESSMENT RULES</strong>
-<ul>
-<li>30 university-level multiple-choice questions.</li>
-<li>Five options per question: A–E.</li>
-<li>Each correct answer earns 1 mark.</li>
-<li>15-minute target; timer turns red after 15 minutes.</li>
-<li>At 16:00, a 5-mark penalty is applied and the assessment submits automatically.</li>
-<li>Final score is out of 30, with percentage, remarks and explanations.</li>
-</ul>
-</div>
-
-<label class="field" for="student">Select student</label>
-<select id="student">
-<option value="" selected disabled>-- Choose Eltone or Yvonne --</option>
-<option value="Eltone">Eltone</option>
-<option value="Yvonne">Yvonne</option>
-</select>
-<div id="previous" class="notice hidden"></div>
-<div class="actions">
-<button id="startBtn" disabled onclick="startTest()">Start Assessment →</button>
-</div>
-<p class="small">Your answers and completed results are saved in this browser on this device.</p>
+  <h2>Welcome to the Challenge</h2>
+  <p>Test your understanding of lower-limb anatomy with challenging, clinically oriented multiple-choice questions.</p>
+  <div class="pills">
+    <span class="pill">30 MCQs</span>
+    <span class="pill">Options A–E</span>
+    <span class="pill">15 Minutes</span>
+    <span class="pill">Instant Explanations</span>
+  </div>
+  <div class="notice">
+    <strong>Scope:</strong> Osteology, gluteal region, thigh, leg, foot, muscles, fascial compartments, nerves and blood vessels. Detailed joint anatomy is excluded.
+    <br><br><strong>Scoring:</strong> 1 mark per question. Maximum score 30. Your answers are marked automatically.
+    <br><br><strong>Timing:</strong> The timer turns red at 15 minutes. Reaching 16 minutes triggers automatic submission and a 5-mark penalty.
+  </div>
+  <hr>
+  <button class="btn full" onclick="startQuiz()">Start Anatomy Challenge →</button>
 </section>
 
-<section id="exam" class="hidden">
-<div class="topbar">
-<div><strong id="studentLabel"></strong><div class="small" id="progressText">0/30 answered</div></div>
-<div><div class="small">TIME ELAPSED</div><div id="timer" class="timer">00:00</div></div>
-</div>
-<div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
-<strong>Question Navigator</strong>
-<div class="small">Green = answered · Outlined = current</div>
-<div id="navigator" class="navigator"></div>
-<div id="questionList"></div>
-<div class="card">
-<p id="unansweredNotice" class="small"></p>
-<div class="actions">
-<button onclick="submitTest(false)">Submit Assessment</button>
-<button class="secondary" onclick="goTop()">Back to Top ↑</button>
-</div>
-</div>
+<section id="exam">
+  <div class="timerbox">
+    <div><strong>Time remaining</strong><div class="muted" id="timerNote">Work carefully and efficiently</div></div>
+    <div class="timer" id="timer">15:00</div>
+  </div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <p class="muted" id="progressText">0 of 30 answered</p>
+  <div id="questions"></div>
+  <div class="card">
+    <h3>Finish assessment</h3>
+    <p class="muted">Unanswered questions receive zero marks. Submit when you are ready.</p>
+    <button class="btn full" onclick="finishQuiz(false)">Submit Answers</button>
+  </div>
 </section>
 
-<section id="results" class="hidden">
-<div class="card">
-<h2>🏆 Assessment Results</h2>
-<p id="resultName"></p>
-<div id="scoreDisplay" class="score">0/30</div>
-<strong id="percentageDisplay"></strong>
-<div class="stats">
-<div class="stat"><span class="small">Raw score</span><strong id="rawScore">0/30</strong></div>
-<div class="stat"><span class="small">Time penalty</span><strong id="penalty">0</strong></div>
-<div class="stat"><span class="small">Correct answers</span><strong id="correctCount">0</strong></div>
-<div class="stat"><span class="small">Unanswered</span><strong id="unansweredCount">0</strong></div>
-</div>
-<div id="overallRemark" class="notice"></div>
-<div id="timeRemark"></div>
-</div>
-
-<div class="card">
-<h2>Performance Bands</h2>
-<p class="small">Your final score is compared against each 5-mark interval.</p>
-<div id="intervalRemarks"></div>
-</div>
-
-<div class="card">
-<h2>📚 Answers &amp; Explanations</h2>
-<div id="reviewList"></div>
-</div>
-
-<div class="card">
-<h2>🥇 Eltone vs Yvonne Leaderboard</h2>
-<div id="leaderboard" class="table-wrap"></div>
-</div>
-
-<div class="card">
-<h2>Assessment Register</h2>
-<div id="register" class="table-wrap"></div>
-<div class="actions no-print">
-<button onclick="printResults()">Download / Print PDF</button>
-<button class="secondary" onclick="showRegister()">View Register</button>
-</div>
-<p class="small no-print">Choose Save as PDF in the browser's print dialogue.</p>
-</div>
-
-<div class="card no-print">
-<h2>Continue</h2>
-<p id="nextMessage"></p>
-<div class="actions">
-<button onclick="nextStudent()" id="nextBtn">Continue →</button>
-<button class="secondary" onclick="backHome()">Homepage</button>
-</div>
-</div>
+<section id="results">
+  <div class="card">
+    <div class="brand">Assessment Report</div>
+    <h2>Lower Limb Anatomy Results</h2>
+    <div class="score" id="score">0/30</div>
+    <p id="percentage"></p>
+    <h3 id="comment"></h3>
+    <p class="muted" id="reportDetails"></p>
+    <div class="notice" id="penaltyNote" style="display:none"></div>
+    <hr>
+    <button class="btn no-print" onclick="window.print()">Print / Save as PDF</button>
+    <button class="btn secondary no-print" onclick="newAttempt()">Try Again</button>
+  </div>
+  <div class="card">
+    <h2>Answer Review</h2>
+    <p class="muted">Review the correct answers and explanations to strengthen your understanding.</p>
+    <div id="review"></div>
+  </div>
 </section>
 </main>
-
-<footer>EMBRYOLOGY ARENA · Learn. Apply. Excel.</footer>
+<footer>MBChB Revision · Lower Limb Anatomy</footer>
 
 <script>
-"use strict";
-
-const questions=[
-{q:"Which event normally initiates completion of the secondary oocyte's second meiotic division?",o:["Penetration of the oocyte by a spermatozoon","Implantation into the endometrium","Formation of the primitive streak","Closure of the neural tube","Formation of the placenta"],a:0,e:"Sperm entry triggers completion of meiosis II, producing the mature ovum and the second polar body.",t:"Fertilisation"},
-{q:"Fertilisation most commonly occurs in which part of the uterine tube?",o:["Intramural part","Ampulla","Isthmus","Infundibulum","Uterine cavity"],a:1,e:"Fertilisation most commonly occurs in the ampulla, the widest portion of the uterine tube.",t:"Fertilisation"},
-{q:"Which structure begins embedding into the endometrium around 6–7 days after fertilisation?",o:["Morula","Gastrula","Blastocyst","Neural crest","Primitive node"],a:2,e:"The blastocyst attaches to the receptive endometrium and begins implantation approximately 6–7 days after fertilisation.",t:"Implantation"},
-{q:"Which embryonic layer gives rise to the three primary germ layers during gastrulation?",o:["Zona pellucida","Syncytiotrophoblast","Amniotic membrane","Epiblast","Yolk sac endoderm alone"],a:3,e:"Epiblast cells migrate through the primitive streak to form definitive endoderm and mesoderm; the remaining epiblast forms ectoderm.",t:"Gastrulation"},
-{q:"Which germ layer gives rise to the epidermis and central nervous system?",o:["Endoderm","Intermediate mesoderm","Lateral plate mesoderm","Extraembryonic mesoderm","Ectoderm"],a:4,e:"Surface ectoderm forms the epidermis, while neuroectoderm forms the brain and spinal cord.",t:"Germ layers"},
-{q:"Which cell layer is the principal source of hCG in early pregnancy?",o:["Syncytiotrophoblast","Epiblast","Amnion","Fetal adrenal cortex","Corpus albicans"],a:0,e:"The syncytiotrophoblast secretes hCG, which maintains the corpus luteum and progesterone production in early pregnancy.",t:"Placenta"},
-{q:"What is an important role of the zona pellucida before implantation?",o:["It produces progesterone","It helps prevent premature attachment and contributes to the block against polyspermy","It forms the neural tube","It forms the umbilical cord","It produces fetal blood"],a:1,e:"The zona pellucida surrounds the early embryo, helps prevent premature attachment in the uterine tube and undergoes changes after fertilisation that help prevent polyspermy.",t:"Fertilisation"},
-{q:"Which structure develops into the brain and spinal cord?",o:["Primitive endoderm","Trophoblast","Neural tube","Chorionic villus","Allantois"],a:2,e:"The neural tube forms the central nervous system, including the brain and spinal cord.",t:"Neurulation"},
-{q:"Failure of closure of the caudal neuropore is associated with which congenital condition?",o:["Cleft palate","Patent ductus arteriosus","Tetralogy of Fallot","Spina bifida","Cleft lip"],a:3,e:"Failure of caudal neural tube closure can cause spina bifida; cranial neuropore closure defects can cause anencephaly.",t:"Congenital anomalies"},
-{q:"Which structure forms the fetal component of the placenta?",o:["Decidua basalis","Maternal spiral arteries","Myometrium","Yolk sac","Chorion frondosum"],a:4,e:"The chorion frondosum, with its branching chorionic villi, forms the fetal component. The decidua basalis forms the maternal component.",t:"Placenta"},
-{q:"Which hormone is particularly important for maintaining the endometrium during pregnancy?",o:["Progesterone","Oxytocin","Prolactin alone","FSH","Thyroxine"],a:0,e:"Progesterone maintains the endometrium and supports the uterine environment required for pregnancy.",t:"Pregnancy"},
-{q:"Which fetal vessel carries oxygen-rich blood from the placenta toward the fetus?",o:["Umbilical arteries","Umbilical vein","Ductus arteriosus","Pulmonary artery","Superior vena cava"],a:1,e:"The single umbilical vein carries oxygenated, nutrient-rich blood from the placenta toward the fetus.",t:"Fetal circulation"},
-{q:"The ductus venosus allows blood to bypass much of the normal sinusoidal circulation of which organ?",o:["Lung","Kidney","Liver","Heart","Spleen"],a:2,e:"The ductus venosus shunts some umbilical venous blood past hepatic sinusoids toward the inferior vena cava.",t:"Fetal circulation"},
-{q:"Which fetal shunt allows blood to pass from the right atrium to the left atrium?",o:["Ductus arteriosus","Ductus venosus","Umbilical vein","Foramen ovale","Coronary sinus"],a:3,e:"The foramen ovale allows blood to pass from the right atrium to the left atrium, helping bypass the fetal lungs.",t:"Fetal circulation"},
-{q:"What principally promotes functional closure of the foramen ovale after birth?",o:["A sustained fall in systemic pressure alone","Increased placental blood flow","Increased fetal haemoglobin production","Closure of the umbilical arteries alone","Left atrial pressure rising above right atrial pressure"],a:4,e:"The first breaths reduce pulmonary vascular resistance and increase pulmonary venous return, raising left atrial pressure above right atrial pressure.",t:"Birth transition"},
-{q:"Which membrane directly surrounds the amniotic fluid and the developing fetus?",o:["Amnion","Chorion alone","Decidua capsularis","Yolk sac","Allantois"],a:0,e:"The amnion encloses the amniotic cavity and fluid, providing a protective environment for development.",t:"Fetal membranes"},
-{q:"Which structure contributes to early blood-cell formation and vasculogenesis?",o:["Neural crest","Yolk sac","Lens placode","Somites alone","Amniotic epithelium"],a:1,e:"Blood islands in the yolk sac contribute to early haematopoiesis and blood vessel development.",t:"Haematopoiesis"},
-{q:"When is the developing human embryo particularly susceptible to major structural congenital malformations?",o:["Weeks 1–2 only","Weeks 9–12 only","Weeks 3–8","After birth only","The final two weeks only"],a:2,e:"Organogenesis occurs mainly during weeks 3–8 after fertilisation, a period of high susceptibility to many major structural malformations.",t:"Organogenesis"},
-{q:"Which process establishes the three primary germ layers?",o:["Neurulation","Implantation","Cleavage","Gastrulation","Capacitation"],a:3,e:"Gastrulation establishes ectoderm, mesoderm and definitive endoderm.",t:"Gastrulation"},
-{q:"Which tissue gives rise to somites that contribute to vertebrae, skeletal muscle and dermis?",o:["Trophoblast","Surface ectoderm","Endoderm","Extraembryonic endoderm","Paraxial mesoderm"],a:4,e:"Paraxial mesoderm forms somites, which contribute to vertebrae and ribs, skeletal muscle and much of the trunk dermis.",t:"Germ layers"},
-{q:"What characterises cleavage during early embryonic development?",o:["Mitotic divisions without substantial increase in overall embryo size","Gastrulation","Neural tube closure","Placental separation","Fetal breathing movements"],a:0,e:"Cleavage divides the zygote into smaller blastomeres through mitosis without substantial overall growth.",t:"Early development"},
-{q:"Which structure contributes to the development of the umbilical cord?",o:["Neural tube alone","Connecting stalk and extraembryonic tissues","Primitive streak alone","Lens placode","Oropharyngeal membrane"],a:1,e:"The connecting stalk and associated extraembryonic tissues contribute to the developing umbilical cord.",t:"Fetal membranes"},
-{q:"Which placental cell layer is directly bathed by maternal blood in the intervillous space?",o:["Cytotrophoblast alone","Fetal capillary endothelium","Syncytiotrophoblast","Amniotic epithelium","Fetal vascular smooth muscle"],a:2,e:"Maternal blood bathes the syncytiotrophoblast covering chorionic villi. Maternal and fetal blood normally remain separated by a placental barrier.",t:"Placenta"},
-{q:"Which combination forms the chorion?",o:["Amnion alone","Yolk sac","Decidua basalis","Trophoblast and extraembryonic somatic mesoderm","Fetal endoderm alone"],a:3,e:"The chorion comprises trophoblast and extraembryonic somatic mesoderm and contributes to the fetal placenta.",t:"Fetal membranes"},
-{q:"Which cells contribute to the adrenal medulla?",o:["Intermediate mesoderm","Foregut endoderm","Surface ectoderm","Paraxial mesoderm","Neural crest cells"],a:4,e:"Neural crest cells migrate into the developing adrenal gland and differentiate into chromaffin cells of the adrenal medulla.",t:"Organogenesis"},
-{q:"Which statement about dizygotic twins is correct?",o:["They arise from two separately fertilised oocytes and are genetically similar to ordinary siblings","They always share one amniotic sac","They arise from one blastocyst dividing","They are always genetically identical","They must always be the same sex"],a:0,e:"Dizygotic twins result from fertilisation of two oocytes. They are genetically comparable to ordinary siblings and may be of different sexes.",t:"Twins"},
-{q:"A patent ductus arteriosus results from failure of closure of which fetal vessel?",o:["Foramen ovale","Ductus arteriosus","Ductus venosus","Umbilical vein","Vitelline artery"],a:1,e:"The ductus arteriosus connects the pulmonary artery to the aorta in fetal life and normally constricts after birth.",t:"Birth transition"},
-{q:"Which change supports increased uteroplacental blood flow during pregnancy?",o:["Persistent uterine vasoconstriction","Complete closure of spiral arteries","Vascular remodelling and reduced uteroplacental vascular resistance","Loss of uterine arterial supply","Cessation of maternal cardiovascular adaptation"],a:2,e:"Uterine vascular remodelling and a low-resistance uteroplacental circulation support placental exchange.",t:"Pregnancy"},
-{q:"What is the principal role of surfactant produced by type II pneumocytes?",o:["It raises alveolar surface tension","It prevents all pulmonary blood flow","It produces fetal haemoglobin","It reduces surface tension and helps prevent alveolar collapse","It directly closes the foramen ovale"],a:3,e:"Surfactant reduces alveolar surface tension, improving lung compliance and helping prevent alveolar collapse after birth.",t:"Fetal development"},
-{q:"Which event is most directly associated with the primitive streak?",o:["Formation of the zona pellucida","Release of the secondary oocyte","Implantation in the uterine tube","Formation of the corpus luteum","Establishment of body axes and cell migration during gastrulation"],a:4,e:"The primitive streak establishes major body axes and allows epiblast cells to migrate and form mesoderm and definitive endoderm.",t:"Gastrulation"}
+const questions = [
+{q:"A fracture involving the neck of the fibula is most likely to injure which nerve, producing weakness of dorsiflexion and eversion?",o:["Tibial nerve","Obturator nerve","Common fibular nerve","Femoral nerve","Sural nerve"],a:2,e:"The common fibular nerve winds around the neck of the fibula, making it vulnerable to trauma. Injury can impair dorsiflexion and eversion, causing foot drop."},
+{q:"Which muscle is the most powerful extensor of the thigh and is especially important when rising from a seated position?",o:["Gluteus minimus","Gluteus maximus","Piriformis","Tensor fasciae latae","Gluteus medius"],a:1,e:"Gluteus maximus is a powerful hip extensor, especially during climbing stairs, rising from sitting and running."},
+{q:"A patient demonstrates a positive Trendelenburg sign when standing on the right lower limb. Which structure is most likely dysfunctional?",o:["Left inferior gluteal nerve","Right obturator nerve","Left femoral nerve","Right superior gluteal nerve","Right tibial nerve"],a:3,e:"The right superior gluteal nerve supplies gluteus medius and minimus. Weakness on the stance side causes the unsupported side of the pelvis to drop."},
+{q:"Which muscle is supplied by the deep fibular nerve?",o:["Fibularis longus","Soleus","Tibialis anterior","Gastrocnemius","Flexor hallucis longus"],a:2,e:"Tibialis anterior is in the anterior compartment of the leg and is supplied by the deep fibular nerve."},
+{q:"Which artery becomes the popliteal artery after passing through the adductor hiatus?",o:["Deep femoral artery","Anterior tibial artery","Obturator artery","Posterior tibial artery","Femoral artery"],a:4,e:"The femoral artery passes through the adductor hiatus in adductor magnus and continues as the popliteal artery."},
+{q:"Which muscle forms the lateral boundary of the femoral triangle?",o:["Adductor longus","Sartorius","Gracilis","Pectineus","Rectus femoris"],a:1,e:"Sartorius forms the lateral boundary; adductor longus forms the medial boundary, and the inguinal ligament forms the superior boundary."},
+{q:"From lateral to medial, which arrangement correctly describes the major structures within the femoral triangle?",o:["Vein, artery, nerve, lymphatics","Nerve, artery, vein, deep inguinal lymphatics","Artery, nerve, vein, lymphatics","Nerve, vein, artery, lymphatics","Lymphatics, vein, nerve, artery"],a:1,e:"The classic lateral-to-medial arrangement is femoral nerve, femoral artery, femoral vein and femoral canal containing lymphatics. The nerve lies outside the femoral sheath."},
+{q:"Which nerve supplies the quadriceps femoris and is essential for powerful extension of the leg?",o:["Sciatic nerve","Obturator nerve","Superior gluteal nerve","Femoral nerve","Common fibular nerve"],a:3,e:"The femoral nerve, derived from L2–L4, supplies the quadriceps femoris and other anterior thigh muscles."},
+{q:"Which muscle is an important medial thigh adductor and is supplied primarily by the obturator nerve?",o:["Adductor longus","Biceps femoris","Semitendinosus","Vastus lateralis","Tibialis posterior"],a:0,e:"Adductor longus is a major thigh adductor supplied by the obturator nerve, typically from L2–L4."},
+{q:"Which hamstring muscle is supplied by the common fibular division of the sciatic nerve rather than its tibial division?",o:["Semimembranosus","Semitendinosus","Long head of biceps femoris","Short head of biceps femoris","Adductor magnus, hamstring part"],a:3,e:"The short head of biceps femoris is supplied by the common fibular division. Most other hamstring muscles receive the tibial division."},
+{q:"Which nerve passes through the greater sciatic foramen, usually below piriformis, and supplies most posterior thigh muscles?",o:["Femoral nerve","Sciatic nerve","Obturator nerve","Superior gluteal nerve","Lateral femoral cutaneous nerve"],a:1,e:"The sciatic nerve typically exits the pelvis through the greater sciatic foramen inferior to piriformis and supplies the posterior thigh compartment."},
+{q:"Which muscle is the principal dorsiflexor of the foot and also helps invert it?",o:["Fibularis brevis","Soleus","Tibialis anterior","Gastrocnemius","Flexor digitorum longus"],a:2,e:"Tibialis anterior dorsiflexes the foot and assists inversion. It is supplied by the deep fibular nerve."},
+{q:"Which nerve supplies the lateral compartment muscles of the leg?",o:["Deep fibular nerve","Tibial nerve","Femoral nerve","Superficial fibular nerve","Saphenous nerve"],a:3,e:"The superficial fibular nerve supplies fibularis longus and brevis, which evert the foot and assist plantarflexion."},
+{q:"A lesion of the tibial nerve in the popliteal region would most directly impair which action?",o:["Dorsiflexion","Eversion only","Extension of the toes","Thigh adduction","Plantarflexion"],a:4,e:"The tibial nerve supplies the posterior compartment muscles of the leg, including gastrocnemius and soleus, which are major plantarflexors."},
+{q:"Which artery runs with the deep fibular nerve in the anterior compartment of the leg?",o:["Anterior tibial artery","Posterior tibial artery","Fibular artery","Medial plantar artery","Superior gluteal artery"],a:0,e:"The anterior tibial artery and deep fibular nerve supply structures in the anterior compartment."},
+{q:"Which artery is palpated on the dorsum of the foot, usually lateral to the tendon of extensor hallucis longus?",o:["Posterior tibial artery","Dorsalis pedis artery","Fibular artery","Medial plantar artery","Inferior gluteal artery"],a:1,e:"The dorsalis pedis artery is the continuation of the anterior tibial artery onto the dorsum of the foot."},
+{q:"Which nerve provides cutaneous sensation to much of the medial leg and medial border of the foot?",o:["Sural nerve","Superficial fibular nerve","Saphenous nerve","Deep fibular nerve","Lateral plantar nerve"],a:2,e:"The saphenous nerve is the sensory terminal branch of the femoral nerve and supplies the medial leg and medial side of the foot."},
+{q:"Which nerve is responsible for sensation in the first dorsal web space between the great toe and second toe?",o:["Sural nerve","Saphenous nerve","Superficial fibular nerve","Deep fibular nerve","Medial plantar nerve"],a:3,e:"The first dorsal web space is a classic cutaneous territory of the deep fibular nerve."},
+{q:"Which muscle inserts into the calcaneus through the calcaneal tendon and is a powerful plantarflexor?",o:["Tibialis anterior","Extensor hallucis longus","Fibularis tertius","Extensor digitorum longus","Soleus"],a:4,e:"Soleus joins gastrocnemius in the triceps surae and inserts via the calcaneal tendon. It is important for sustained plantarflexion and posture."},
+{q:"Which structure passes posterior to the medial malleolus within the tarsal tunnel?",o:["Tibial nerve","Common fibular nerve","Femoral nerve","Deep fibular nerve","Saphenous nerve"],a:0,e:"The tibial nerve passes through the tarsal tunnel behind the medial malleolus, accompanied by tendons and the posterior tibial vessels."},
+{q:"Which tarsal bone forms the heel and receives the insertion of the calcaneal tendon?",o:["Talus","Calcaneus","Navicular","Cuboid","Medial cuneiform"],a:1,e:"The calcaneus forms the heel bone and provides the insertion site for the calcaneal tendon."},
+{q:"Which bone is the principal weight-bearing bone of the leg?",o:["Fibula","Talus","Tibia","Patella","Calcaneus"],a:2,e:"The tibia transmits most body weight from the femur to the foot. The fibula mainly provides muscle attachments and lateral stability."},
+{q:"Which of the following muscles belongs to the deep posterior compartment of the leg?",o:["Tibialis anterior","Fibularis longus","Extensor hallucis longus","Tibialis posterior","Gastrocnemius"],a:3,e:"Tibialis posterior is a deep posterior compartment muscle, along with flexor hallucis longus, flexor digitorum longus and popliteus."},
+{q:"Which muscle is particularly important in supporting the medial longitudinal arch and also inverts the foot?",o:["Fibularis brevis","Extensor digitorum longus","Fibularis tertius","Extensor hallucis longus","Tibialis posterior"],a:4,e:"Tibialis posterior supports the medial longitudinal arch and contributes to inversion and plantarflexion."},
+{q:"Which nerve supplies most of the intrinsic muscles of the sole of the foot?",o:["Medial and lateral plantar nerves","Femoral nerve","Obturator nerve","Superior gluteal nerve","Saphenous nerve"],a:0,e:"The tibial nerve divides into medial and lateral plantar nerves, which supply the intrinsic muscles and much of the sole's sensation."},
+{q:"Which muscle is a major evertor of the foot and inserts at the base of the fifth metatarsal?",o:["Tibialis posterior","Fibularis brevis","Tibialis anterior","Flexor hallucis longus","Soleus"],a:1,e:"Fibularis brevis inserts at the tuberosity of the fifth metatarsal and everts the foot."},
+{q:"Which muscle occupies the anterior thigh and has both a hip-flexion action and a knee-extension action?",o:["Vastus medialis","Adductor magnus","Rectus femoris","Semimembranosus","Gracilis"],a:2,e:"Rectus femoris crosses the hip and knee. It flexes the thigh and extends the leg."},
+{q:"Which artery is the principal arterial supply to the deep structures of the thigh?",o:["Dorsalis pedis artery","Posterior tibial artery","Anterior tibial artery","Profunda femoris (deep artery of the thigh)","Medial plantar artery"],a:3,e:"The profunda femoris artery is the major deep arterial supply of the thigh and gives off perforating branches."},
+{q:"Which structure is found in the femoral canal and is clinically relevant in femoral hernias?",o:["Femoral nerve","Femoral artery","Sciatic nerve","Obturator nerve","Deep inguinal lymphatics"],a:4,e:"The femoral canal contains loose connective tissue and lymphatics, including the deep inguinal node known as the node of Cloquet. A femoral hernia enters this canal."},
+{q:"Which muscle is supplied by the inferior gluteal nerve?",o:["Gluteus medius","Gluteus maximus","Tensor fasciae latae","Gluteus minimus","Piriformis"],a:1,e:"The inferior gluteal nerve supplies gluteus maximus. The superior gluteal nerve supplies gluteus medius, gluteus minimus and tensor fasciae latae."}
 ];
 
-let student="",answers=[],startTime=0,timerInterval=null,submitted=false;
-let results=[],attempt=null;
-const KEY="embryology_arena_results_v2";
-const DRAFT="embryology_arena_draft_v2";
-const letters=["A","B","C","D","E"];
+let startTime=0, interval=null, finished=false, penalty=false;
+let selected={};
 
-function esc(s){
-return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function loadResults(){
-try{const x=JSON.parse(localStorage.getItem(KEY)||"[]");results=Array.isArray(x)?x:[]}catch(e){results=[]}
-}
-function saveResults(){
-try{localStorage.setItem(KEY,JSON.stringify(results))}catch(e){}
-}
-function completed(name){return results.some(r=>r.name===name)}
-function latest(name){return results.filter(r=>r.name===name).slice(-1)[0]}
-function saveDraft(){
-try{
-localStorage.setItem(DRAFT,JSON.stringify({student,answers,startTime}))
-}catch(e){}
-}
-function clearDraft(){
-try{localStorage.removeItem(DRAFT)}catch(e){}
-}
-
-document.getElementById("student").addEventListener("change",updateSetup);
-function updateSetup(){
-const name=document.getElementById("student").value;
-const btn=document.getElementById("startBtn");
-const prev=document.getElementById("previous");
-btn.disabled=!name;
-btn.textContent=name?(completed(name)?"Retake Assessment ↻":"Start Assessment →"):"Select a student first";
-const r=name?latest(name):null;
-if(r){
-prev.classList.remove("hidden");
-prev.textContent="Previous attempt: "+name+" scored "+r.finalScore+"/30 ("+r.percentage.toFixed(1)+"%). You may start a new attempt.";
-}else{prev.classList.add("hidden");prev.textContent=""}
-}
-
-function startTest(){
-const selected=document.getElementById("student").value;
-if(!selected)return;
-let draft=null;
-try{draft=JSON.parse(localStorage.getItem(DRAFT)||"null")}catch(e){}
-if(draft&&draft.student===selected&&Array.isArray(draft.answers)&&draft.answers.length===30&&confirm("A saved unfinished attempt was found for "+selected+". Resume it?")){
-student=selected;answers=draft.answers;startTime=draft.startTime;
-}else{
-student=selected;answers=Array(30).fill(null);startTime=Date.now();saveDraft();
-}
-submitted=false;
-document.getElementById("setup").classList.add("hidden");
-document.getElementById("results").classList.add("hidden");
-document.getElementById("exam").classList.remove("hidden");
-document.getElementById("studentLabel").textContent="Student: "+student;
-renderQuestions();renderNavigator();updateProgress();updateTimer();
-if(timerInterval)clearInterval(timerInterval);
-timerInterval=setInterval(updateTimer,250);
-window.scrollTo({top:0,behavior:"smooth"});
+function startQuiz(){
+  document.getElementById("setup").style.display="none";
+  document.getElementById("exam").style.display="block";
+  document.getElementById("results").style.display="none";
+  selected={}; finished=false; penalty=false;
+  startTime=Date.now();
+  renderQuestions();
+  updateProgress();
+  updateTimer();
+  interval=setInterval(updateTimer,250);
+  window.scrollTo(0,0);
 }
 
 function renderQuestions(){
-const list=document.getElementById("questionList");list.innerHTML="";
-questions.forEach((q,i)=>{
-const section=document.createElement("section");section.className="question";section.id="question-"+i;
-const number=document.createElement("div");number.className="q-number";number.textContent="QUESTION "+(i+1)+" / 30 · 1 MARK";
-const title=document.createElement("h3");title.textContent=q.q;
-section.append(number,title);
-q.o.forEach((choice,j)=>{
-const label=document.createElement("label");label.className="option";
-const radio=document.createElement("input");radio.type="radio";radio.name="q"+i;radio.value=j;
-radio.checked=answers[i]===j;
-radio.addEventListener("change",()=>{
-if(submitted)return;
-answers[i]=j;updateProgress();renderNavigator();saveDraft();
-});
-const span=document.createElement("span");span.textContent=letters[j]+". "+choice;
-label.append(radio,span);section.append(label);
-});
-list.append(section);
-});
+  const holder=document.getElementById("questions");
+  holder.innerHTML="";
+  questions.forEach((item,i)=>{
+    const box=document.createElement("article");
+    box.className="question";
+    box.id="q"+i;
+    let options="";
+    item.o.forEach((option,j)=>{
+      options+=`<label class="option" id="opt${i}_${j}">
+        <input type="radio" name="q${i}" value="${j}" onchange="choose(${i},${j})">
+        <span><strong>${String.fromCharCode(65+j)}.</strong> ${option}</span>
+      </label>`;
+    });
+    box.innerHTML=`
+      <div class="qtop"><span class="qnum">QUESTION ${i+1}</span><span class="marks">1 mark</span></div>
+      <div class="prompt">${item.q}</div>
+      ${options}
+      <div class="feedback" id="feedback${i}"></div>`;
+    holder.appendChild(box);
+  });
 }
-function renderNavigator(){
-const nav=document.getElementById("navigator");nav.innerHTML="";
-questions.forEach((q,i)=>{
-const b=document.createElement("button");b.className="navbtn";
-if(answers[i]!==null)b.classList.add("answered");
-b.textContent=i+1;b.title="Question "+(i+1);
-b.onclick=()=>{document.getElementById("question-"+i).scrollIntoView({behavior:"smooth",block:"start"})};
-nav.append(b);
-});
+
+function choose(i,j){
+  selected[i]=j;
+  updateProgress();
 }
+
 function updateProgress(){
-const n=answers.filter(a=>a!==null).length;
-document.getElementById("progressText").textContent=n+"/30 answered";
-document.getElementById("progressFill").style.width=(n/30*100)+"%";
-document.getElementById("unansweredNotice").textContent=
-n===30?"All questions answered. You may submit.":(30-n)+" unanswered question(s) will score zero.";
+  const count=Object.keys(selected).length;
+  document.getElementById("progressBar").style.width=(count/questions.length*100)+"%";
+  document.getElementById("progressText").textContent=count+" of "+questions.length+" answered";
 }
-function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+
 function updateTimer(){
-if(submitted)return;
-const seconds=Math.floor((Date.now()-startTime)/1000);
-const el=document.getElementById("timer");el.textContent=fmt(seconds);
-el.classList.toggle("red",seconds>=900);
-if(seconds>=960)submitTest(true);
-}
-function goTop(){window.scrollTo({top:0,behavior:"smooth"})}
-
-function submitTest(auto){
-if(submitted)return;
-const missing=answers.filter(a=>a===null).length;
-if(!auto&&!confirm(missing?"You have "+missing+" unanswered questions. Submit anyway?":"Submit your assessment now?"))return;
-submitted=true;if(timerInterval)clearInterval(timerInterval);timerInterval=null;
-const elapsed=Math.floor((Date.now()-startTime)/1000);
-const raw=questions.reduce((s,q,i)=>s+(answers[i]===q.a?1:0),0);
-const penalty=elapsed>=960?5:0;
-attempt={name:student,answers:[...answers],raw,penalty,finalScore:Math.max(0,raw-penalty),percentage:Math.max(0,raw-penalty)/30*100,elapsed,late:elapsed>=960,date:new Date().toLocaleString()};
-results.push(attempt);saveResults();clearDraft();
-document.getElementById("exam").classList.add("hidden");
-document.getElementById("results").classList.remove("hidden");
-showResults(attempt,auto);window.scrollTo({top:0,behavior:"smooth"});
+  if(finished)return;
+  const elapsed=Math.floor((Date.now()-startTime)/1000);
+  const remaining=Math.max(0,900-elapsed);
+  document.getElementById("timer").textContent=
+    String(Math.floor(remaining/60)).padStart(2,"0")+":"+
+    String(remaining%60).padStart(2,"0");
+  if(elapsed>=900){
+    document.getElementById("timer").classList.add("warning");
+    document.getElementById("timerNote").textContent="Time exceeded";
+  }
+  if(elapsed>=960){
+    penalty=true;
+    finishQuiz(true);
+  }
 }
 
-function comment(s){
-if(s===30)return"Outstanding! A perfect score demonstrating excellent mastery.";
-if(s>=25)return"Excellent performance. You demonstrate strong understanding.";
-if(s>=20)return"Very good work. Revise a few weaker areas.";
-if(s>=15)return"Satisfactory foundation. More revision is recommended.";
-if(s>=10)return"Keep practising. Revisit the core embryology concepts.";
-if(s>=5)return"Limited mastery. Review your notes and practise more questions.";
-return"Further revision is needed. Start with the fundamentals and build gradually.";
-}
-function bandComment(n){
-if(n===0)return"Revisit the fundamentals and build your foundation.";
-if(n===5)return"Basic understanding is emerging; more study is needed.";
-if(n===10)return"Strengthen your understanding of developmental processes.";
-if(n===15)return"Continue practising the application of embryology concepts.";
-if(n===20)return"Good understanding of many important concepts.";
-return"Excellent to outstanding mastery of the assessed concepts.";
-}
-function showResults(r,auto){
-document.getElementById("resultName").textContent="Student: "+r.name+" · "+r.date;
-document.getElementById("scoreDisplay").textContent=r.finalScore+"/30";
-document.getElementById("percentageDisplay").textContent="Final percentage: "+r.percentage.toFixed(1)+"%";
-document.getElementById("rawScore").textContent=r.raw+"/30";
-document.getElementById("penalty").textContent=r.penalty+" marks";
-document.getElementById("correctCount").textContent=r.raw;
-document.getElementById("unansweredCount").textContent=r.answers.filter(a=>a===null).length;
-document.getElementById("overallRemark").innerHTML="<strong>Overall feedback</strong><br>"+esc(comment(r.finalScore));
-document.getElementById("timeRemark").innerHTML="<div class='"+(r.late?"warning":"notice")+"'><strong>Time used:</strong> "+fmt(r.elapsed)+"<br>"+
-(r.late?"16-minute limit reached. A 5-mark penalty was applied.":r.elapsed>=900?"15-minute target exceeded; no penalty because 16 minutes was not reached.":"Completed within the 15-minute target.")+
-(auto?"<br>Assessment submitted automatically.":"")+"</div>";
+function finishQuiz(auto){
+  if(finished)return;
+  if(!auto&&!confirm("Submit your answers now? Unanswered questions will score zero."))return;
+  finished=true;
+  clearInterval(interval);
+  let raw=0;
+  questions.forEach((item,i)=>{
+    if(selected[i]===item.a)raw++;
+  });
+  const elapsed=Math.floor((Date.now()-startTime)/1000);
+  const finalScore=Math.max(0,raw-(penalty?5:0));
+  const percent=Math.round(finalScore/questions.length*100);
 
-const bands=document.getElementById("intervalRemarks");bands.innerHTML="";
-for(let n=0;n<=25;n+=5){
-const upper=n===25?30:n+4;
-const reached=r.finalScore>=n&&r.finalScore<=upper;
-const d=document.createElement("div");d.className="remark";
-d.innerHTML="<strong>"+n+"–"+upper+" marks:</strong> "+esc(bandComment(n))+(reached?" <strong>← YOUR BAND</strong>":"");
-bands.append(d);
-}
-renderReview(r);renderRegister();renderLeaderboard();
-const other=r.name==="Eltone"?"Yvonne":"Eltone";
-document.getElementById("nextMessage").textContent=completed(other)?
-"Both students have at least one recorded attempt. You may start another attempt.":
-other+" can now take the assessment on this device.";
-document.getElementById("nextBtn").textContent=completed(other)?"New Attempt ↻":"Continue to "+other+" →";
+  document.getElementById("exam").style.display="none";
+  document.getElementById("results").style.display="block";
+  document.getElementById("score").textContent=finalScore+"/30";
+  document.getElementById("percentage").textContent=percent+"% · Raw score: "+raw+"/30";
+
+  let comment;
+  if(percent>=90)comment="Outstanding performance 🌟";
+  else if(percent>=80)comment="Excellent work. Refine the finer clinical details.";
+  else if(percent>=70)comment="Very good. Review the questions you missed.";
+  else if(percent>=60)comment="Good progress. Strengthen nerves, vessels and compartments.";
+  else if(percent>=50)comment="Keep practising active recall and regional anatomy.";
+  else comment="Use the explanations to guide your next revision session.";
+  document.getElementById("comment").textContent=comment;
+  document.getElementById("reportDetails").textContent=
+    "Candidate: Yvonne · Programme: MBChB · Time used: "+
+    Math.floor(elapsed/60)+" min "+(elapsed%60)+" sec.";
+  const pn=document.getElementById("penaltyNote");
+  pn.style.display=penalty?"block":"none";
+  pn.textContent=penalty?"A 5-mark penalty was applied for reaching 16 minutes.":"";
+
+  const review=document.getElementById("review");
+  review.innerHTML="";
+  questions.forEach((item,i)=>{
+    const chosen=selected[i];
+    const correct=chosen===item.a;
+    const box=document.createElement("div");
+    box.className="question";
+    box.innerHTML=`
+      <div class="qtop"><span class="qnum">Q${i+1}</span>
+      <span class="marks">${correct?"Correct ✓":"Incorrect ✕"}</span></div>
+      <div class="prompt">${item.q}</div>
+      <p class="muted"><strong>Your answer:</strong> ${
+        chosen===undefined?"Not answered":String.fromCharCode(65+chosen)+". "+item.o[chosen]
+      }</p>
+      <p><strong>Correct answer:</strong> ${String.fromCharCode(65+item.a)}. ${item.o[item.a]}</p>
+      <div class="feedback show">${item.e}</div>`;
+    review.appendChild(box);
+  });
+  window.scrollTo(0,0);
 }
 
-function renderReview(r){
-const box=document.getElementById("reviewList");box.innerHTML="";
-questions.forEach((q,i)=>{
-const ok=r.answers[i]===q.a;
-const yours=r.answers[i]===null?"Not answered":letters[r.answers[i]]+". "+q.o[r.answers[i]];
-const key=letters[q.a]+". "+q.o[q.a];
-const d=document.createElement("div");d.className="review-item";
-d.innerHTML="<strong>Q"+(i+1)+". "+esc(q.q)+"</strong><br>"+
-"<span class='"+(ok?"correct":"incorrect")+"'>"+(ok?"✓ Correct":"✗ Incorrect")+"</span><br>"+
-"<span class='small'>Your answer: "+esc(yours)+"</span><br>"+
-"<span class='correct'>Correct answer: "+esc(key)+"</span><br>"+
-"<span class='small'>Topic: "+esc(q.t)+"</span><p>"+esc(q.e)+"</p>";
-box.append(d);
-});
+function newAttempt(){
+  clearInterval(interval);
+  document.getElementById("setup").style.display="block";
+  document.getElementById("exam").style.display="none";
+  document.getElementById("results").style.display="none";
+  document.getElementById("timer").classList.remove("warning");
+  document.getElementById("timer").textContent="15:00";
+  document.getElementById("timerNote").textContent="Work carefully and efficiently";
+  window.scrollTo(0,0);
 }
-function renderRegister(){
-const box=document.getElementById("register");box.innerHTML="";
-if(!results.length){box.textContent="No completed attempts.";return}
-const table=document.createElement("table");
-table.innerHTML="<thead><tr><th>Student</th><th>Date</th><th>Raw</th><th>Penalty</th><th>Final</th><th>%</th><th>Time</th></tr></thead>";
-const body=document.createElement("tbody");
-results.forEach(r=>{
-const tr=document.createElement("tr");
-[r.name,r.date,r.raw+"/30",r.penalty+"",r.finalScore+"/30",r.percentage.toFixed(1)+"%",fmt(r.elapsed)].forEach(v=>{
-const td=document.createElement("td");td.textContent=v;tr.append(td);
-});body.append(tr);
-});
-table.append(body);box.append(table);
-}
-function renderLeaderboard(){
-const box=document.getElementById("leaderboard");
-const e=latest("Eltone"),y=latest("Yvonne");
-let html="<table><thead><tr><th>Student</th><th>Best score</th><th>Percentage</th><th>Attempts</th></tr></thead><tbody>";
-for(const name of ["Eltone","Yvonne"]){
-const all=results.filter(r=>r.name===name);
-const best=all.length?Math.max(...all.map(r=>r.finalScore)):null;
-const pct=best===null?"—":(best/30*100).toFixed(1)+"%";
-html+="<tr><td>"+esc(name)+"</td><td>"+(best===null?"Not attempted":best+"/30")+"</td><td>"+pct+"</td><td>"+all.length+"</td></tr>";
-}
-html+="</tbody></table>";
-if(e&&y){
-const eb=Math.max(...results.filter(r=>r.name==="Eltone").map(r=>r.finalScore));
-const yb=Math.max(...results.filter(r=>r.name==="Yvonne").map(r=>r.finalScore));
-html+="<div class='notice'><strong>"+(eb===yb?"It's a tie! 🏆":eb>yb?"Eltone leads! 🥇":"Yvonne leads! 🥇")+"</strong><br>Difference: "+Math.abs(eb-yb)+" mark(s), using each student's best recorded result.</div>";
-}else html+="<p class='small'>Both students must complete an assessment to compare scores.</p>";
-box.innerHTML=html;
-}
-function printResults(){window.print()}
-function showRegister(){document.getElementById("register").scrollIntoView({behavior:"smooth"})}
-function nextStudent(){
-const other=student==="Eltone"?"Yvonne":"Eltone";
-document.getElementById("results").classList.add("hidden");
-document.getElementById("setup").classList.remove("hidden");
-document.getElementById("student").value=completed(other)?"":other;
-updateSetup();window.scrollTo({top:0,behavior:"smooth"});
-}
-function backHome(){
-document.getElementById("results").classList.add("hidden");
-document.getElementById("setup").classList.remove("hidden");
-document.getElementById("student").value="";updateSetup();
-window.scrollTo({top:0,behavior:"smooth"});
-}
-loadResults();updateSetup();
 </script>
 </body>
 </html>
-
